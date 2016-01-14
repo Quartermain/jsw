@@ -5,7 +5,9 @@
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
     "bourbon": "~4.2.6",
-    "compass-breakpoint": "~2.6.1"
+    "compass-breakpoint": "~2.6.1",
+    "font-awesome": "fontawesome#~4.5.0",
+    "owl.carousel": "OwlCarousel2#~2.0.0-beta.3"
   },
   "overrides": {
     "bootstrap-sass": {
