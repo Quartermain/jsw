@@ -5,6 +5,7 @@ var jsw = {
 
 		if($(".hero-banner").length) 		{
 			jsw.heroBanner.init('.hero-banner .owl-carousel', ".hero-banner .dots-container");
+			jsw.heroBanner.init('.sliderBanner .owl-carousel', undefined , ".sliderBanner .nav");
 		}
 	},
 
@@ -32,7 +33,17 @@ var jsw = {
 			    responsiveClass: true
 			});
 		}
-	}
+	},
+
+	lightBox: {
+		init: function(){
+			'use strict';
+			lightbox.option({
+				'resizeDuration': 200,
+				'wrapAround': true
+			})
+		}
+	},
 }
 
 $(document).ready(function(){
