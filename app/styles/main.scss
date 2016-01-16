@@ -129,14 +129,18 @@ h5 {
  *      Button
  **************************************************************************************************/
 
-.btn-blue { font-weight: 700; font-size: 15px; background: $c-blue4; padding: 20px 25px; display: inline-block; color: $c-white; @include border-radius(3px); border: solid 1px transparent;
-    &:hover { background: $c-white; border: solid 1px $c-blue; color: $c-blue4; }
+.btn-blue { font-weight: 700; font-size: 15px; background: $c-blue4; padding: 20px 25px; display: inline-block; color: $c-white; @include border-radius(3px); border: solid 1px transparent; @include transition(all, 0.3s, ease);
+    &:hover { background: $c-white; border: solid 1px $c-blue; color: $c-blue4; padding-right: 35px; @include transition(all, 0.3s, ease); }
 }
 
-.btn-small { background: $c-blue2; padding: 10px 25px; color: $c-white; text-decoration: none; }
+.btn-small { background: $c-blue2; padding: 10px 25px; color: $c-white; text-decoration: none;
+    &.button--shikoba {
+        .button__icon { top: 36%; }
+    }
+}
 
-.btn-white { background: $c-white; font-weight: 700; padding: 20px 25px; display: inline-block; @include border-radius(3px); color: $c-blue; text-decoration: none; border: none;
-    &:hover { background: $c-blue; color: #fff; position: relative; border: none; }
+.btn-white { background: $c-white; font-weight: 700; padding: 20px 25px; display: inline-block; @include border-radius(3px); color: $c-blue; text-decoration: none; border: none; @include transition(all, 0.3s, ease);
+    &:hover { background: $c-blue; color: #fff; position: relative; border: none; padding-right: 35px; @include transition(all, 0.3s, ease); }
 }
 
 //effect button
@@ -176,8 +180,9 @@ h5 {
 
 .button--shikoba .button__icon {
     position: absolute;
-    right: 5px;
-    font-size: 18px;
+    right: 12px;
+    top: 40%;
+    font-size: $f-base;
     -webkit-transform: translate3d(-500px, 0, 0);
     transform: translate3d(-500px, 0, 0);
     -webkit-transition: -webkit-transform 0.3s;
@@ -222,7 +227,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
                     }
 
                     .sub-menu { background: $c-white; font-weight: 400; font-size: $f-base; width: 285px; margin: 0; padding: 15px; border-left: solid 1px $c-gray1; border-top: solid 1px $c-gray1; position: absolute; left: 0; top: 100%; list-style: none; display: none; z-index: 2;
-                        opacity: 0; visibility: hidden; -webkit-transition: visibility 0.2s linear, opacity 0.2s linear; -moz-transition: visibility 0.2s linear, opacity 0.2s linear; -o-transition: visibility 0.2s linear, opacity 0.2s linear;
+                        opacity: 0; visibility: hidden; -webkit-transition: visibility 0.2s linear, opacity 0.2s linear; -moz-transition: visibility 0.2s linear, opacity 0.2s linear; -o-transition: visibility 0.2s linear, opacity 0.2s linear; line-height: 20px;
                         ul { margin: 0; padding: 0; list-style: none; display: inline-block; vertical-align: top; }
                         .block-submenu { background: $c-gray1; margin-left: 10px; display: inline-block; vertical-align: top; }
                     }
@@ -408,9 +413,9 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
 
     .sliderBanner {
         .items { width: 100%; overflow: hidden; }
-        .slider-banner { padding-top: 150px;
+        .slider-banner { padding-top: 200px;
             h1 { color: $c-white; text-transform: uppercase; font-weight: 700; }
-            .txt-description { font-size: $f-base + 2; }
+            .txt-description { font-size: $f-base + 2; margin-bottom: 20px; }
         }
         .item-nav { position: absolute; top: 50%; @include translate(0, -50%); z-index: 3;
             &.next-slide { right: 0; cursor: pointer; }
@@ -520,13 +525,13 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         }
 
         .nav-slit .prev-btn:hover i.fa {
-            -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
+            -webkit-transform: translateX(-200%);
+            transform: translateX(-200%);
         }
 
         .nav-slit .next-btn:hover i.fa {
-            -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+            -webkit-transform: translateX(200%);
+            transform: translateX(200%);
         }
 
         .nav-slit .item-nav:hover .prev-img,
