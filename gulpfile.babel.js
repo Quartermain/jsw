@@ -152,8 +152,13 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-//gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
-gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
+// Copy Bower Components
+gulp.task('bower', function() {
+    return gulp.src(['bower_components/**/*']).pipe(gulp.dest('dist/bower_components'));
+});
+
+//gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'bower'], () => {
+gulp.task('build', ['html', 'images', 'fonts', 'extras', 'bower'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

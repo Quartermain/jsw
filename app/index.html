@@ -7,14 +7,17 @@
     <title>jsw</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!--my add file-->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="bower_components/fancyBox/source/jquery.fancybox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="bower_components/fancyBox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+    <link rel="stylesheet" href="bower_components/fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
 
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css"/>
     <!-- Place favicon.ico in the root directory -->
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.carousel.css"/>
-    <link rel="stylesheet" href="/bower_components/lightbox2/dist/css/lightbox.css"/>
+    <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
@@ -22,7 +25,7 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
 </head>
 <body>
@@ -49,7 +52,9 @@
                             <li><a href="#nogo">Cement</a></li>
                             <li><a href="#nogo">Information <br>Technology</a></li>
                         </ul>
-                        <div class="block-submenu">&nbsp;</div>
+                        <div class="block-submenu">
+                            <a href="#nogo"><img src="images/img-mega-menu.jpg" alt="images mega menu"></a>
+                        </div>
                     </div>
 
                 </li>
@@ -73,7 +78,7 @@
 <div class="hero-banner clearfix">
     <div class="owl-carousel clearfix">
         <div class="items">
-            <img src="../images/hero1.jpg" alt="image hero 1">
+            <img src="images/hero1.jpg" alt="image hero 1">
             <div class="hero-slider">
                 <div class="container">
                     <div class="txt-title">JSW Cement adds to assets with</div>
@@ -81,12 +86,13 @@
                     <div class="txt-plans">Plans to grow the cement business include investing in 2.4 million <br>tonne
                         cement plant in Salboni, West Bengal.
                     </div>
-                    <div class="btn-white"><a href="#nogo">Discover This Story</a></div>
+                    <a href="#nogo" class="button button--shikoba btn-white"><i
+                            class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
                 </div>
             </div>
         </div>
         <div class="items">
-            <img src="../images/hero2.jpg" alt="image hero 2">
+            <img src="images/hero2.jpg" alt="image hero 2">
             <div class="hero-slider">
                 <div class="container">
                     <div class="txt-title">JSW Cement adds to assets with</div>
@@ -94,7 +100,8 @@
                     <div class="txt-plans">Plans to grow the cement business include investing in 2.4 million <br>tonne
                         cement plant in Salboni, West Bengal.
                     </div>
-                    <div class="btn-white"><a href="#nogo">Discover This Story</a></div>
+                    <a href="#nogo" class="button button--shikoba btn-white"><i
+                            class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
                 </div>
             </div>
         </div>
@@ -106,7 +113,7 @@
     </div>
     <div class="btn-scroll-down">
         <div class="container">
-            <div class="btn-down"><i class="fa fa-arrow-down"></i></div>
+            <a href="#nogo" class="btn-down"><i class="fa fa-arrow-down"></i></a>
         </div>
     </div>
 </div>
@@ -114,28 +121,33 @@
 <!-- end caroulsel -->
 
 <!--block content-->
-<div class="container-block">
+<div id="scrollpage" class="container-block">
     <div class="container">
         <div class="block-content1">
             <div class="row">
                 <div class="col-md-6">
                     <div class="left-block">
-                        <a href="#nogo" class="btn-share"><i class="fa fa-share-alt"></i> Share</a>
+                        <div class="btn-share">
+                            <a href="#nogo" class="txt-share"><i class="fa fa-share-alt"></i> Share</a>
+                            <a href="#nogo"><i class="fa fa-facebook"></i></a>
+                            <a href="#nogo"><i class="fa fa-twitter"></i></a>
+                            <a href="#nogo"><i class="fa fa-google-plus"></i></a>
+                        </div>
                         <h2>JSW Cement invests RS 9,000-CR to <br>up capacity.</h2>
                         <div class="txt-block">Capacity utilization at plants to touch 70 <br>per cent in the fiscal
                             2015-16
                         </div>
-                        <a href="#nogo" class="btn-blue">Discover This Story</a>
+                        <a href="#nogo" class="button button--shikoba btn-blue"><i
+                                class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="img-block">
                         <div class="block-empty1"></div>
-                        <img src="../images/img1.jpg" alt="images 1" class="img-responsive">
-                        <div class="video-btn">
-                            <a href=""></a>
+                        <img src="images/img1.jpg" alt="images 1" class="img-responsive">
+                        <a class="video-btn fancybox-video" href="http://www.youtube.com/watch?v=opj24KnzrWo">
                             <i class="fa fa-play-circle"></i>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -147,19 +159,25 @@
                 <div class="col-md-6">
                     <div class="img-block">
                         <div class="block-empty2"></div>
-                        <img src="../images/img2.jpg" alt="images 1" class="img-responsive">
+                        <img src="images/img2.jpg" alt="images 1" class="img-responsive">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="left-block">
-                        <a href="#nogo" class="btn-share"><i class="fa fa-share-alt"></i> Share</a>
+                        <div class="btn-share">
+                            <a href="#nogo" class="txt-share"><i class="fa fa-share-alt"></i> Share</a>
+                            <a href="#nogo"><i class="fa fa-facebook"></i></a>
+                            <a href="#nogo"><i class="fa fa-twitter"></i></a>
+                            <a href="#nogo"><i class="fa fa-google-plus"></i></a>
+                        </div>
                         <h3>Go forth and conquer
                             #KhelFauladi</h3>
                         <div class="txt-block">Bengaluru Yodhas is a wrestling team that is owned by JSW and
-                            participates in the Pro Wrestling League. We wish our Bengaluru Yodha’s all the very best in
-                            the ongoing season
+                        participates in the Pro Wrestling League. We wish our Bengaluru Yodha’s all the very best in
+                        the ongoing season
                         </div>
-                        <a href="#nogo" class="btn-blue">Discover This Story</a>
+                        <a href="#nogo" class="button button--shikoba btn-blue"><i
+                                class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
                     </div>
                 </div>
             </div>
@@ -170,22 +188,28 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="left-block">
-                        <a href="#nogo" class="btn-share"><i class="fa fa-share-alt"></i> Share</a>
+                        <div class="btn-share">
+                            <a href="#nogo" class="txt-share"><i class="fa fa-share-alt"></i> Share</a>
+                            <a href="#nogo"><i class="fa fa-facebook"></i></a>
+                            <a href="#nogo"><i class="fa fa-twitter"></i></a>
+                            <a href="#nogo"><i class="fa fa-google-plus"></i></a>
+                        </div>
                         <h3>Crusaders of Change.</h3>
                         <div class="txt-block">CII-ITC Sustainability Awards were announced on 15 December, 2015 where
-                            JSW Steel (Vijaynagar Works) was awarded Outstanding Accomplishment and JSW Energy was
-                            awarded Commendation for Significant Achievement at the ceremony held in New Delhi.
+                        JSW Steel (Vijaynagar Works) was awarded Outstanding Accomplishment and JSW Energy was
+                        awarded Commendation for Significant Achievement at the ceremony held in New Delhi.
                         </div>
-                        <a href="#nogo" class="btn-blue">Discover This Story</a>
+                        <a href="#nogo" class="button button--shikoba btn-blue"><i
+                                class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="img-block">
                         <div class="block-empty1"></div>
-                        <img src="../images/img3.jpg" alt="images 1" class="img-responsive">
-                        <div class="video-btn">
+                        <img src="images/img3.jpg" alt="images 1" class="img-responsive">
+                        <a class="video-btn fancybox-video" href="http://www.youtube.com/watch?v=opj24KnzrWo">
                             <i class="fa fa-play-circle"></i>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -197,18 +221,24 @@
                 <div class="col-md-6">
                     <div class="img-block">
                         <div class="block-empty2"></div>
-                        <img src="../images/img4.jpg" alt="images 1" class="img-responsive">
+                        <img src="images/img4.jpg" alt="images 1" class="img-responsive">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="left-block">
-                        <a href="#nogo" class="btn-share"><i class="fa fa-share-alt"></i> Share</a>
+                        <div class="btn-share">
+                            <a href="#nogo" class="txt-share"><i class="fa fa-share-alt"></i> Share</a>
+                            <a href="#nogo"><i class="fa fa-facebook"></i></a>
+                            <a href="#nogo"><i class="fa fa-twitter"></i></a>
+                            <a href="#nogo"><i class="fa fa-google-plus"></i></a>
+                        </div>
                         <h3>JSW Leadership</h3>
                         <div class="txt-block">I strongly believe that at JSW, our true strength lies in the quality of
-                            our people, many of whom have been with us for over 20 years and consider this company to be
-                            a part of their family.
+                        our people, many of whom have been with us for over 20 years and consider this company to be
+                        a part of their family.
                         </div>
-                        <a href="#nogo" class="btn-blue">Discover This Story</a>
+                        <a href="#nogo" class="button button--shikoba btn-blue"><i
+                                class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
                     </div>
                 </div>
             </div>
@@ -222,15 +252,102 @@
 
 <div class="sliderBanner clearfix">
     <div class="owl-carousel clearfix">
-        <div class="items">
-            <img src="../images/slider1.jpg" alt="image slider1">
+        <div class="items nav-slit">
+            <div class="item-nav prev-slide">
+                <div class="prev-btn"><i class="fa fa-arrow-left"></i></div>
+                <div class="prev-img">
+                    <img src="images/img-thum-btn.jpg" alt="images thumbnail button">
+                    <div class="title-btn">Teamwork</div>
+                </div>
+            </div>
+
+            <figure class="effect-apollo">
+                <img src="images/slider1.jpg" alt="image slider1">
+                <figcaption>
+                    <div class="slider-banner">
+                        <div class="container">
+                            <h1>Will of STEEL</h1>
+                            <p class="txt-description">When willpower is infused with the might of steel, we get a<br>
+                                level
+                                of determination that only a few possess.  </p>
+                            <a href="#nogo" class="button button--shikoba btn-white"><i
+                                    class="button__icon fa fa-arrow-right"></i><span>Discover More</span></a>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+            <div class="item-nav next-slide">
+                <div class="next-btn"><i class="fa fa-arrow-right"></i></div>
+                <div class="next-img">
+                    <div class="title-btn">Teamwork</div>
+                    <img src="images/img-thum-btn.jpg" alt="images thumbnail button">
+                </div>
+            </div>
         </div>
-        <div class="items">
-            <img src="../images/slider1.jpg" alt="image slider2">
+        <div class="items nav-slit">
+            <div class="item-nav prev-slide">
+                <div class="prev-btn"><i class="fa fa-arrow-left"></i></div>
+                <div class="prev-img">
+                    <img src="images/img-thum-btn.jpg" alt="images thumbnail button">
+                    <div class="title-btn">Teamwork</div>
+                </div>
+            </div>
+
+            <figure class="effect-apollo">
+                <img src="images/slider1.jpg" alt="image slider1">
+                <figcaption>
+                    <div class="slider-banner">
+                        <div class="container">
+                            <h1>Will of STEEL</h1>
+                            <p class="txt-description">When willpower is infused with the might of steel, we get a<br>
+                                level
+                                of determination that only a few possess.  </p>
+                            <a href="#nogo" class="button button--shikoba btn-white"><i
+                                    class="button__icon fa fa-arrow-right"></i><span>Discover More</span></a>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+            <div class="item-nav next-slide">
+                <div class="next-btn"><i class="fa fa-arrow-right"></i></div>
+                <div class="next-img">
+                    <div class="title-btn">Teamwork</div>
+                    <img src="images/img-thum-btn.jpg" alt="images thumbnail button">
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="navi-slider">
-        <div class="nav"></div>
+        <div class="items nav-slit">
+            <div class="item-nav prev-slide">
+                <div class="prev-btn"><i class="fa fa-arrow-left"></i></div>
+                <div class="prev-img">
+                    <img src="images/img-thum-btn.jpg" alt="images thumbnail button">
+                    <div class="title-btn">Teamwork</div>
+                </div>
+            </div>
+
+            <figure class="effect-apollo">
+                <img src="images/slider1.jpg" alt="image slider1">
+                <figcaption>
+                    <div class="slider-banner">
+                        <div class="container">
+                            <h1>Will of STEEL</h1>
+                            <p class="txt-description">When willpower is infused with the might of steel, we get a<br>
+                                level
+                                of determination that only a few possess.  </p>
+                            <a href="#nogo" class="button button--shikoba btn-white"><i
+                                    class="button__icon fa fa-arrow-right"></i><span>Discover More</span></a>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+            <div class="item-nav next-slide">
+                <div class="next-btn"><i class="fa fa-arrow-right"></i></div>
+                <div class="next-img">
+                    <div class="title-btn">Teamwork</div>
+                    <img src="images/img-thum-btn.jpg" alt="images thumbnail button">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -242,16 +359,17 @@
     <div class="container">
         <h1>What’s on at JSW</h1>
         <div class="block-header">
-            <img src="../images/bg-whaton.jpg" alt="images what on">
+            <img src="images/bg-whaton.jpg" alt="images what on">
             <div class="content-whaton">
                 <div class="txt-title-header">
                     <span class="label-stell">stell</span><span class="date-time">20 nov 2015</span>
                 </div>
                 <h4>JSW Steel is now the largest steel maker in India company reports.</h4>
                 <div class="short-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
-                    bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo.
+                bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo.
                 </div>
-                <a href="#nogo" class="btn-white">Discover This Story</a>
+                <a href="#nogo" class="button button--shikoba btn-white"><i
+                        class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
             </div>
         </div>
         <div class="block-element">
@@ -259,7 +377,7 @@
                 <div class="col-md-4">
                     <div class="col-content">
                         <div class="row-header">
-                            <img src="../images/img-whaton1.jpg" alt="image content 1">
+                            <img src="images/img-whaton1.jpg" alt="image content 1">
                             <span class="lable-content">FOUNDATION</span>
                             <div class="arrown-top"></div>
                         </div>
@@ -269,41 +387,44 @@
                             <p class="txt-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
                                 aliquet lorem tellus, non maximus justo ultrices et. Lorem ipsum dolor sit amet,
                                 consectetur adipiscing elit. </p>
-                            <a href="#nogo" class="btn-blue btn-small">Discover</a>
+                            <a href="#nogo" class="button button--shikoba btn-blue btn-small"><i
+                                    class="button__icon fa fa-arrow-right"></i><span>Discover</span></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="col-content">
                         <div class="row-header">
-                            <img src="../images/img-whaton1.jpg" alt="image content 1">
+                            <img src="images/img-whaton2.jpg" alt="image content 2">
                             <span class="lable-content">FOUNDATION</span>
                             <div class="arrown-top"></div>
                         </div>
                         <div class="content">
                             <div class="date-time">10 OCT 2015</div>
-                            <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+                            <h5>Accelerate Breakthroughs like never before</h5>
                             <p class="txt-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
                                 aliquet lorem tellus, non maximus justo ultrices et. Lorem ipsum dolor sit amet,
                                 consectetur adipiscing elit. </p>
-                            <a href="#nogo" class="btn-blue btn-small">Discover</a>
+                            <a href="#nogo" class="button button--shikoba btn-blue btn-small"><i
+                                    class="button__icon fa fa-arrow-right"></i><span>Discover</span></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="col-content">
                         <div class="row-header">
-                            <img src="../images/img-whaton1.jpg" alt="image content 1">
+                            <img src="images/img-whaton3.jpg" alt="image content 3">
                             <span class="lable-content">FOUNDATION</span>
                             <div class="arrown-top"></div>
                         </div>
                         <div class="content">
                             <div class="date-time">10 OCT 2015</div>
-                            <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+                            <h5>Maecenas fringilla vehicula orci, vel sollicitudin mauris consectetur.</h5>
                             <p class="txt-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
                                 aliquet lorem tellus, non maximus justo ultrices et. Lorem ipsum dolor sit amet,
                                 consectetur adipiscing elit. </p>
-                            <a href="#nogo" class="btn-blue btn-small">Discover</a>
+                            <a href="#nogo" class="button button--shikoba btn-blue btn-small"><i
+                                    class="button__icon fa fa-arrow-right"></i><span>Discover</span></a>
                         </div>
                     </div>
                 </div>
@@ -317,15 +438,17 @@
 <!-- video -->
 
 <div class="block-video">
-    <img class="bg-video" src="../images/bg-video.jpg" alt="bg video">
+    <img class="bg-video" src="images/bg-video.jpg" alt="bg video">
     <div class="content-video">
         <div class="container">
-            <img class="logo-white" src="../images/logo-white.png" alt="logo company">
+            <img class="logo-white" src="images/logo-white.png" alt="logo company">
             <div class="txt-world">WORLDWIDE</div>
-            <div class="txt-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod<br> bibendum laoreet. Proin gravida
+            <div class="txt-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod<br>
+                bibendum laoreet. Proin gravida
                 dolor sit amet
             </div>
-            <a href="#nogo" class="btn-white">Discover Interactive Map</a>
+            <a href="#nogo" class="button button--shikoba btn-white"><i
+                    class="button__icon fa fa-arrow-right"></i><span>Discover Interactive Map</span></a>
         </div>
     </div>
 </div>
@@ -334,22 +457,62 @@
 
 <!--block partners-->
 
-<div class="block-partner">
-    <h2>Our <span>Partners</span></h2>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <img src="../images/logo-partner1.png" alt="logo partner">
+<div class="sliderPartner clearfix">
+    <div class="owl-carousel clearfix">
+        <div class="block-partner items">
+            <h2>Our <span>Partners</span></h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="#nogo" class="img-partner">
+                            <img src="images/logo-partner1.png" alt="logo partner">
+                        </a>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="text-description">Down to earth, hard-working, transparent, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. </div>
+                        <div class="name-partner">Brent Weaver</div>
+                        <div class="title-job">Vice President, Global Blue</div>
+                        <a href="#nogo" class="button button--shikoba btn-blue"><i
+                                class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-7">
-                <div class="text-description">Down to earth, hard-working, transparent, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. </div>
-                <div class="name-partner">Brent Weaver</div>
-                <div class="title-job">Vice President, Global Blue</div>
-                <a href="#nogo" class="btn-blue">Discover This Story</a>
+        </div>
+        <div class="block-partner items">
+            <h2>Our <span>Partners</span></h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="#nogo" class="img-partner">
+                            <img src="images/logo-partner1.png" alt="logo partner">
+                        </a>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="text-description">Down to earth, hard-working, transparent, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. </div>
+                        <div class="name-partner">Brent Weaver</div>
+                        <div class="title-job">Vice President, Global Blue</div>
+                        <a href="#nogo" class="button button--shikoba btn-blue"><i
+                                class="button__icon fa fa-arrow-right"></i><span>Discover This Story</span></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="carousel-nav">
+        <div class="next action-nav"><i class="fa fa-arrow-right"></i></div>
+        <div class="prev action-nav"><i class="fa fa-arrow-left"></i></div>
+    </div>
 </div>
+
+<!--scroll top-->
+
+<div class="btn-scroll-up">
+    <div class="container">
+        <a href="#nogo" class="btn-top"><i class="fa fa-arrow-up"></i></a>
+    </div>
+</div>
+
+<!--end-->
 
 <!-- end -->
 
@@ -359,74 +522,74 @@
         <div class="container">
             <div class="column">
                 <div class="colum-element">
-                    <a href="#nogo"><img src="../images/logo.png" alt="logo company"></a>
+                    <a href="#nogo"><img src="images/logo.png" alt="logo company"></a>
                 </div>
                 <div class="colum-element">
                     <ul>
                         <li class="title">About Us</li>
-                        <li><a href="#nogo" >History & Milestones</a></li>
-                        <li><a href="#nogo" >Awards</a></li>
-                        <li><a href="#nogo" >Worldwide</a></li>
-                        <li><a href="#nogo" >Governance</a></li>
-                        <li><a href="#nogo" >Partnership</a></li>
+                        <li><a href="#nogo">History & Milestones</a></li>
+                        <li><a href="#nogo">Awards</a></li>
+                        <li><a href="#nogo">Worldwide</a></li>
+                        <li><a href="#nogo">Governance</a></li>
+                        <li><a href="#nogo">Partnership</a></li>
                     </ul>
                     <ul>
                         <li class="title">BUSINESSES</li>
-                        <li><a href="#nogo" >Steel</a></li>
-                        <li><a href="#nogo" >Energy</a></li>
-                        <li><a href="#nogo" >Infrastructure</a></li>
-                        <li><a href="#nogo" >Cement</a></li>
-                        <li><a href="#nogo" >Information Technology</a></li>
+                        <li><a href="#nogo">Steel</a></li>
+                        <li><a href="#nogo">Energy</a></li>
+                        <li><a href="#nogo">Infrastructure</a></li>
+                        <li><a href="#nogo">Cement</a></li>
+                        <li><a href="#nogo">Information Technology</a></li>
                     </ul>
                     <ul>
                         <li class="title">SPORTS</li>
-                        <li><a href="#nogo" >Indian Institute of sports</a></li>
-                        <li><a href="#nogo" >Bengaluru FC</a></li>
+                        <li><a href="#nogo">Indian Institute of sports</a></li>
+                        <li><a href="#nogo">Bengaluru FC</a></li>
                     </ul>
                 </div>
                 <div class="colum-element">
                     <ul>
                         <li class="title">SUSTAINABILITY</li>
-                        <li><a href="#nogo" >Climate Change</a></li>
-                        <li><a href="#nogo" >Biodiversity</a></li>
-                        <li><a href="#nogo" >Environmental conditions</a></li>
-                        <li><a href="#nogo" >Community Service</a></li>
-                        <li><a href="#nogo" >FAQs</a></li>
+                        <li><a href="#nogo">Climate Change</a></li>
+                        <li><a href="#nogo">Biodiversity</a></li>
+                        <li><a href="#nogo">Environmental conditions</a></li>
+                        <li><a href="#nogo">Community Service</a></li>
+                        <li><a href="#nogo">FAQs</a></li>
                     </ul>
                     <ul>
                         <li class="title">FOUNDATION</li>
-                        <li><a href="#nogo" >Healthcare & Nutrition</a></li>
-                        <li><a href="#nogo" >Education</a></li>
-                        <li><a href="#nogo" >Water & Sanitation</a></li>
-                        <li><a href="#nogo" >Art & Heritage</a></li>
-                        <li><a href="#nogo" >Sports training</a></li>
-                        <li><a href="#nogo" >Skill Development</a></li>
-                        <li><a href="#nogo" >Corporate Citizenship</a></li>
+                        <li><a href="#nogo">Healthcare & Nutrition</a></li>
+                        <li><a href="#nogo">Education</a></li>
+                        <li><a href="#nogo">Water & Sanitation</a></li>
+                        <li><a href="#nogo">Art & Heritage</a></li>
+                        <li><a href="#nogo">Sports training</a></li>
+                        <li><a href="#nogo">Skill Development</a></li>
+                        <li><a href="#nogo">Corporate Citizenship</a></li>
                     </ul>
                 </div>
                 <div class="colum-element">
                     <ul>
                         <li class="title">MEDIA</li>
-                        <li><a href="#nogo" >News</a></li>
-                        <li><a href="#nogo" >Events</a></li>
-                        <li><a href="#nogo" >Interviews</a></li>
-                        <li><a href="#nogo" >Reports</a></li>
-                        <li><a href="#nogo" >Resources</a></li>
+                        <li><a href="#nogo">News</a></li>
+                        <li><a href="#nogo">Events</a></li>
+                        <li><a href="#nogo">Interviews</a></li>
+                        <li><a href="#nogo">Reports</a></li>
+                        <li><a href="#nogo">Resources</a></li>
                     </ul>
                     <ul>
                         <li class="title">CAREERS</li>
-                        <li><a href="#nogo" >Meet JSW</a></li>
-                        <li><a href="#nogo" >Students & Graduates</a></li>
-                        <li><a href="#nogo" >Professionals</a></li>
-                        <li><a href="#nogo" >Our people</a></li>
+                        <li><a href="#nogo">Meet JSW</a></li>
+                        <li><a href="#nogo">Students & Graduates</a></li>
+                        <li><a href="#nogo">Professionals</a></li>
+                        <li><a href="#nogo">Our people</a></li>
                     </ul>
                     <ul>
                         <li class="title">INVESTORS</li>
-                        <li><a href="#nogo" >Steel</a></li>
-                        <li><a href="#nogo" >Energy</a></li>
-                        <li><a href="#nogo" >Investor FAQs</a></li>
-                        <li><a href="#nogo" >JSW Holdings</a></li>
-                        <li><a href="#nogo" >Governance</a></li>
+                        <li><a href="#nogo">Steel</a></li>
+                        <li><a href="#nogo">Energy</a></li>
+                        <li><a href="#nogo">Investor FAQs</a></li>
+                        <li><a href="#nogo">JSW Holdings</a></li>
+                        <li><a href="#nogo">Governance</a></li>
                     </ul>
                 </div>
                 <div class="colum-element">
@@ -475,25 +638,31 @@
 
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
-<script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/bower_components/owl.carousel/dist/owl.carousel.js"></script>
-<script src="/bower_components/lightbox2/dist/js/lightbox.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/owl.carousel/dist/owl.carousel.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
+<!--add new-->
+<!-- Add fancyBox -->
+<script src="bower_components/fancyBox/source/jquery.fancybox.pack.js?v=2.1.5" type="text/javascript"></script>
+<script src="bower_components/fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5" type="text/javascript"></script>
+<script src="bower_components/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6" type="text/javascript"></script>
+<script src="bower_components/fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7" type="text/javascript"></script>
+
 <!-- build:js scripts/plugins.js -->
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
 <!-- endbuild -->
 
 <!-- build:js scripts/main.js -->

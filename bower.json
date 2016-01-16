@@ -8,7 +8,7 @@
     "compass-breakpoint": "~2.6.1",
     "font-awesome": "fontawesome#~4.5.0",
     "owl.carousel": "OwlCarousel2#~2.0.0-beta.3",
-    "lightbox2": "~2.8.2"
+    "fancyBox": "~2.1.5"
   },
   "overrides": {
     "bootstrap-sass": {
