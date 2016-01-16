@@ -17,7 +17,7 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.carousel.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
@@ -438,7 +438,7 @@
 <!-- video -->
 
 <div class="block-video">
-    <img class="bg-video" src="images/bg-video.jpg" alt="bg video">
+    <div id="bgVideo"></div>
     <div class="content-video">
         <div class="container">
             <img class="logo-white" src="images/logo-white.png" alt="logo company">
@@ -638,8 +638,9 @@
 
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/owl.carousel/dist/owl.carousel.js"></script>
+<script src="/bower_components/modernizr/modernizr.js"></script>
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/owl.carousel/dist/owl.carousel.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -649,6 +650,10 @@
 <script src="bower_components/fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5" type="text/javascript"></script>
 <script src="bower_components/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6" type="text/javascript"></script>
 <script src="bower_components/fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7" type="text/javascript"></script>
+
+<!--Add video youtube background-->
+
+<script src="bower_components/youtubeBackground/src/jquery.youtubebackground.js"></script>
 
 <!-- build:js scripts/plugins.js -->
 <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>

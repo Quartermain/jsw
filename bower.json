@@ -8,7 +8,8 @@
     "compass-breakpoint": "~2.6.1",
     "font-awesome": "fontawesome#~4.5.0",
     "owl.carousel": "OwlCarousel2#~2.0.0-beta.3",
-    "fancyBox": "~2.1.5"
+    "fancyBox": "~2.1.5",
+    "youtubeBackground": "youtube-background-video#~1.0.4"
   },
   "overrides": {
     "bootstrap-sass": {

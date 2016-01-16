@@ -11,6 +11,7 @@ var jsw = {
         jsw.videoPopup();
         jsw.scrollDown();
         jsw.scrollTop();
+        jsw.backgroundVideo();
     },
 
     heroBanner: {
@@ -80,6 +81,13 @@ var jsw = {
     scrollTop: function () {
         $('.btn-scroll-up a').on('click', function () {
             $('html,body').animate({scrollTop: 0}, 2000);
+        });
+    },
+
+    backgroundVideo: function () {
+        $('#bgVideo').YTPlayer({
+            fitToBackground: true,
+            videoId: 'FG0fTKAqZ5g'
         });
     },
 

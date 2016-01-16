@@ -599,4 +599,16 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         -webkit-transition-delay: 0.1s;
         transition-delay: 0.1s;
     }
+
+    // Video youtube
+
+    #video{
+        position: relative;
+        background: transparent;
+    }
+
+    .ytplayer-container{
+        top: 0;
+        z-index: -1;
+    }
 }
