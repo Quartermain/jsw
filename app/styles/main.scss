@@ -42,6 +42,11 @@ $f-base: 14px;
 $font-family: 'Lato', sans-serif;
 $font-second: 'Gentium Basic', serif;
 
+//grid
+
+$mxw768: max-width 767px;
+$mxw992: max-width 991px;
+
 /*===============================================
 		MIXINS
  ===============================================*/
@@ -109,22 +114,27 @@ h1, h2, h3 { color: $c-blue; font-weight: 300; }
 
 h1 {
     font-size: 60px;
+    @include breakpoint($mxw992) { font-size: 46px; }
 }
 
 h2 {
     font-size: 54px;
+    @include breakpoint($mxw992) { font-size: 36px; margin-top: 15px; line-height: 36px; }
 }
 
 h3 {
     font-size: 48px;
+    @include breakpoint($mxw992) { font-size: 32px; margin-top: 15px; line-height: 32px; }
 }
 
 h4 {
     font-size: 32px;
+    @include breakpoint($mxw992) { font-size: 20px; }
 }
 
 h5 {
     font-size: 22px;
+    @include breakpoint($mxw992) { font-size: $f-base + 2; }
 }
 
 /**************************************************************************************************
@@ -132,17 +142,29 @@ h5 {
  **************************************************************************************************/
 
 .btn-blue { font-weight: 700; font-size: 15px; background: $c-blue4; padding: 20px 25px; display: inline-block; color: $c-white; @include border-radius(3px); border: solid 1px transparent; @include transition(all, 0.3s, ease);
-    &:hover { background: $c-white; border: solid 1px $c-blue; color: $c-blue4; padding-right: 35px; @include transition(all, 0.3s, ease); }
+    @include breakpoint($mxw992) { padding: 10px 15px; font-size: $f-base - 2;
+        &.button--shikoba .button__icon { top: 36%; right: 9px; }
+    }
+    &:hover { background: $c-white; border: solid 1px $c-blue; color: $c-blue4; padding-right: 35px; @include transition(all, 0.3s, ease);
+        @include breakpoint($mxw992) { padding-right: 25px; }
+    }
 }
 
 .btn-small { background: $c-blue2; padding: 10px 25px; color: $c-white; text-decoration: none;
+    @include breakpoint($mxw992) { padding: 5px 10px; }
+
     &.button--shikoba {
-        .button__icon { top: 36%; }
+        .button__icon { top: 30%; }
     }
 }
 
 .btn-white { background: $c-white; font-weight: 700; padding: 20px 25px; display: inline-block; @include border-radius(3px); color: $c-blue; text-decoration: none; border: none; @include transition(all, 0.3s, ease);
-    &:hover { background: $c-blue; color: #fff; position: relative; border: none; padding-right: 35px; @include transition(all, 0.3s, ease); }
+    @include breakpoint($mxw992) { font-size: $f-base + 2; padding: 10px 15px;
+        &.button--shikoba .button__icon { top: 36%; right: 9px; }
+    }
+    &:hover { background: $c-blue; color: #fff; position: relative; border: none; padding-right: 35px; @include transition(all, 0.3s, ease);
+        @include breakpoint($mxw992) { padding-right: 25px; }
+    }
 }
 
 //effect button
@@ -205,8 +227,14 @@ h5 {
 html,
 body { display: block; height: 100%; }
 
+* {
+    &:before,
+    &:after { @include transition(all, 0.5s, ease); }
+}
+
 body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     &.iframe { background: transparent; color: #fff; overflow: hidden;
+        @include breakpoint($mxw992) { font-size: 12px; }
     }
 
     /*===============================================
@@ -219,10 +247,20 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             .branding { background: url("../images/logo.png") no-repeat; width: 94px; height: 45px; margin: 10px 0 0 30px; display: inline-block; }
             .main-menu-left { margin: 0 30px 0 0; padding: 0; list-style: none; display: inline-block; float: right;
                 > li { font-weight: 700; border: none; padding: 0; float: left;
-                    a.title-link { color: $c-blue; text-decoration: none; float: left; position: relative; padding: 27px 11px 24px; }
+                    a.title-link { color: $c-blue; text-decoration: none; float: left; position: relative; padding: 27px 11px 24px; @include transition(all, 0.5s, ease);
+                        &:before,
+                        &:after { @include transition(all, 0.5s, ease); }
+                        &:hover {
+                            &:before,
+                            &:after { @include transition(all, 0.5s, ease); }
+                        }
+                    }
                     &:hover {
-                        .sub-menu { display: block; @include transition(all, 0.5s, ease); opacity: 1; top:100%; }
-                        a.title-link { z-index: 3; background: #fff; border-top: solid 4px $c-red; border-left: solid 1px $c-gray1; border-right: solid 1px $c-gray1; padding: 23px 10px 24px; text-decoration: none; }
+                        .sub-menu { display: block; @include transition(all, 0.5s, ease); opacity: 1; top: 100%; }
+                        a.title-link { z-index: 3; background: #fff; @include transition(all, 0.5s, ease);
+                            &:before { content: ' '; z-index: 2; float: left; border-top: solid 4px $c-red; position: absolute; left: 0; top: 0; width: 100%; height: 100%; @include transition(all, 0.5s, ease); }
+                            &:after { content: ' '; z-index: 1; float: left; border-left: solid 1px $c-gray1; border-right: solid 1px $c-gray1; position: absolute; left: 0; top: 0; width: 100%; height: 100%; @include transition(all, 0.5s, ease); }
+                        }
                     }
 
                     &.has-submenu:hover a { padding-bottom: 25px; margin-bottom: -1px; }
@@ -232,7 +270,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
                         -webkit-transition: visibility 0.2s linear, opacity 0.2s linear;
                         -moz-transition: visibility 0.2s linear, opacity 0.2s linear;
                         -o-transition: visibility 0.2s linear, opacity 0.2s linear;
-                        @include transition(all, 0.5s, ease); opacity: 0; top:-500%;
+                        @include transition(all, 0.5s, ease); opacity: 0; top: -500%;
 
                         ul { margin: 0; padding: 0; list-style: none; display: inline-block; vertical-align: top; }
 
@@ -266,7 +304,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
                         -webkit-transition: visibility 0.2s linear, opacity 0.2s linear;
                         -moz-transition: visibility 0.2s linear, opacity 0.2s linear;
                         -o-transition: visibility 0.2s linear, opacity 0.2s linear;
-                        position: absolute; opacity: 0; top:-500%;
+                        position: absolute; opacity: 0; top: -500%;
                         @include transition(all, 0.5s, ease);
 
                         ul { margin: 0; padding: 0; list-style: none; display: inline-block; vertical-align: top; }
@@ -292,9 +330,13 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
                             background: linear-gradient(to right, #154193 0%, #17469e 23%, #17469e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
                             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#154193', endColorstr='#17469e', GradientType=1); /* IE6-9 */
 
-                            .link-right {padding-left: 40px; padding-top: 73px;
+                            .link-right { padding-left: 40px; padding-top: 73px;
                                 li { line-height: 35px;
-                                    a {color: $c-white; font-size: 22px; font-weight: 300; text-decoration: none; }
+                                    a { font-size: 22px; font-weight: 300; padding-bottom: 0; padding-right: 30px; overflow: hidden; text-decoration: none; color: $c-white; display: inline-block; position: relative;
+                                        &:hover {
+                                            .button__icon { color: $c-red; }
+                                        }
+                                    }
                                 }
                             }
 
@@ -316,18 +358,23 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             .slider-banner { position: absolute; left: 0; top: 0; width: 100%; color: $c-white;
                 .txt-title {
                     font-size: 36px; margin-top: 90px;
+                    @include breakpoint($mxw992) { font-size: 36px; }
+                    @include breakpoint($mxw768) { margin-top: 25px; font-size: $f-base + 2; }
                 }
                 .txt-west {
                     font-size: 62px; font-weight: 700; text-transform: uppercase; line-height: 100%;
+                    @include breakpoint($mxw768) { font-size: 30px; }
                 }
                 .txt-plans {
                     font-size: 18px; font-weight: 400; margin-bottom: 30px;
+                    @include breakpoint($mxw768) { font-size: 13px; margin-bottom: 30px; }
                 }
 
             }
         }
 
         .navi-dots { position: absolute; width: 100%; top: 60%; z-index: 3;
+            @include breakpoint($mxw768) { top: 75%; }
             .dots-container {
                 .owl-dot { width: 12px; height: 12px; @include border-top-radius(100%); @include border-bottom-radius(100%); border: solid 1px $c-white; display: inline-block; margin-right: 10px; cursor: pointer;
                     &.active { background: $c-white; }
@@ -335,6 +382,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             }
         }
         .btn-scroll-down { position: absolute; width: 100%; bottom: 10%; z-index: 3;
+            @include breakpoint($mxw768) { bottom: 4%; }
             .btn-down { font-size: $f-base + 4; background: $c-red; width: 54px; padding: 10px 0; color: $c-white; text-align: center; cursor: pointer; display: block; @include border-radius(2px);
                 &:hover { background: $c-red2; @include transition(all, 0.3s, ease); }
             }
@@ -343,6 +391,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
 
     .btn-scroll-up {
         .btn-top { font-size: $f-base + 4; background: $c-red; width: 54px; padding: 10px 0; color: $c-white; text-align: center; cursor: pointer; display: block; @include border-radius(2px); float: right;
+            @include breakpoint($mxw992) { width: 40px; height: 40px; }
             &:hover { background: $c-red2; @include transition(all, 0.3s, ease); }
         }
     }
@@ -350,54 +399,124 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     //    block content
 
     .container-block { background: $c-gray2; padding-bottom: 40px;
+        @include breakpoint($mxw992) { padding-top: 30px; }
+        @include breakpoint($mxw768) { padding-bottom: 10px; }
         h1 { color: $c-blue; }
-        .txt-block { font-style: $f-base + 1; margin: 20px 0; color: $c-gray4; }
+        .txt-block { font-style: $f-base + 1; margin: 20px 0; color: $c-gray4;
+            @include breakpoint($mxw992) { font-size: $f-base - 2; margin: 15px 0; }
+        }
     }
     .block-content1 { padding: 70px 0 40px 0;
-        .left-block { margin-left: 60px; }
-        .btn-share { margin-top: 25px; }
-        .img-block { float: right; }
+        @include breakpoint($mxw992) { padding-bottom: 15px; padding-top: 15px }
+        @include breakpoint($mxw768) { padding-top: 15px; padding-bottom: 20px; }
+        .left-block { margin-left: 60px;
+            @include breakpoint($mxw992) { margin-left: 30px;
+                h2 { margin-top: 10px; }
+            }
+            @include breakpoint($mxw768) { margin-left: 0; }
+        }
+        .btn-share { margin-top: 25px;
+            @include breakpoint($mxw992) { margin-top: 10px; }
+            @include breakpoint($mxw768) { margin-top: 0; }
+        }
+        .img-block { float: right;
+            @include breakpoint($mxw992) { float: none; }
+        }
     }
     .block-content2 { background: $c-white; padding: 20px; border: solid 1px $c-gray3;
-        .btn-share { margin-top: 40px; }
+        @include breakpoint($mxw992) { padding: 10px; }
+        @include breakpoint($mxw768) { padding: 10px; margin: 0 -10px 15px; }
+        .btn-share { margin-top: 40px;
+            @include breakpoint($mxw992) { margin-top: 20px }
+            @include breakpoint($mxw768) { margin-top: 0 }
+        }
     }
     .img-block { position: relative;
-        .block-empty1 { content: ''; width: 0; height: 0; position: absolute; left: 0; top: 50%; border-top: 50px solid transparent; border-left: 50px solid $c-gray2; border-bottom: 50px solid transparent; @include translate(0, -50%); }
-        .block-empty2 { content: ''; width: 0; height: 0; position: absolute; right: 0; top: 50%; border-top: 50px solid transparent; border-right: 50px solid $c-white; border-bottom: 50px solid transparent; @include translate(0, -50%); }
+        .block-empty1 { content: ''; width: 0; height: 0; position: absolute; left: 0; top: 50%; border-top: 50px solid transparent; border-left: 50px solid $c-gray2; border-bottom: 50px solid transparent; @include translate(0, -50%);
+            @include breakpoint($mxw992) { border-top-width: 30px; border-left-width: 20px; border-bottom-width: 30px; }
+            @include breakpoint($mxw768) { @include transform(rotate(90deg)); top: -10px; left: 30px; border-top-width: 20px; border-left-width: 20px; border-bottom-width: 20px; }
+        }
+        .block-empty2 { content: ''; width: 0; height: 0; position: absolute; right: 0; top: 50%; border-top: 50px solid transparent; border-right: 50px solid $c-white; border-bottom: 50px solid transparent; @include translate(0, -50%);
+            @include breakpoint($mxw992) { border-top-width: 30px; border-right-width: 20px; border-bottom-width: 30px; }
+            @include breakpoint($mxw768) { @include transform(rotate(-90deg)); top: -10px; left: 30px; border-top-width: 20px; border-right-width: 20px; border-bottom-width: 20px; }
+        }
     }
-    .video-btn { font-size: 42px; color: $c-white; position: absolute; bottom: 2%; right: 2%; }
+    .video-btn { font-size: 42px; color: $c-white; position: absolute; bottom: 2%; right: 2%;
+        @include breakpoint($mxw992) { font-size: 28px; right: 3%; }
+    }
 
     .btn-share { padding: 6px 10px; border: solid 1px $c-gray3; @include border-radius(3px); display: inline-block; color: $c-gray4; text-decoration: none;
         width: 75px; @include transition(width, 1s, ease); white-space: nowrap; overflow: hidden;
-        &:hover { width: 150px; text-decoration: none; }
-        .txt-share { color: $c-gray4; margin-right: 15px; text-decoration: none; }
-        a { margin-right: 5px; color: $c-blue4; }
+        @include breakpoint($mxw992) { padding: 2px 5px; width: 50px; }
+        &:hover { width: 150px; text-decoration: none;
+            @include breakpoint($mxw992) { width: 110px; }
+        }
+        .txt-share { color: $c-gray4; margin-right: 15px; text-decoration: none;
+            @include breakpoint($mxw992) { font-size: $f-base - 4; }
+        }
+        a { margin-right: 5px; color: $c-blue4;
+            @include breakpoint($mxw992) { font-size: $f-base - 4; }
+        }
     }
 
     //    block what on
 
     .block-whaton { margin-bottom: 40px;
-        h1 { text-align: center; margin-top: 70px; margin-bottom: 30px }
+        @include breakpoint($mxw992) { margin-bottom: 30px; }
+        @include breakpoint($mxw768) { margin-bottom: 30px; }
+        h1 { text-align: center; margin-top: 70px; margin-bottom: 30px;
+            @include breakpoint($mxw992) { margin-top: 35px; margin-bottom: 15px; font-size: 39px; }
+        }
         .block-header { position: relative;
-            .content-whaton { background: $c-blue; padding: 30px; width: percentage(490/1140); position: absolute; right: 0; bottom: 0; color: $c-white;
+            .content-whaton { background: $c-blue; padding: 20px; width: percentage(490/1140); position: absolute; right: 0; bottom: 0; color: $c-white;
+                @include breakpoint($mxw992) { padding: 13px 13px 13px 20px; }
                 .txt-title-header {
-                    .label-stell { font-size: $f-base + 2; background: $c-red; padding: 5px 10px; text-transform: uppercase; color: $c-white; }
-                    .date-time { color: rgba(255, 255, 255, .6); margin-left: 10px; }
+                    .label-stell { font-size: $f-base - 2; background: $c-red; padding: 5px 10px; text-transform: uppercase; color: $c-white; }
+                    .date-time-header { color: rgba(255, 255, 255, .6); margin-left: 10px;
+                        @include breakpoint($mxw992) { font-size: $f-base - 2; }
+                    }
                 }
                 h4 { font-weight: 400; }
-                .short-content { font-size: $f-base + 1; margin: 20px 0; color: rgba(255, 255, 255, 0.8); }
+                .short-content { font-size: $f-base + 1; margin: 20px 0; color: rgba(255, 255, 255, 0.8);
+                    @include breakpoint($mxw992) { font-size: $f-base - 2; margin: 15px 0; }
+                }
             }
         }
+
+        @include breakpoint($mxw768) {
+            .img-whaton-mobile {
+                position: relative;
+            }
+        }
+
+        .lable-content { background: $c-red; font-size: $f-base - 2; padding: 5px 10px; color: $c-white; text-transform: uppercase; position: absolute; bottom: 0; left: 0;
+            @include breakpoint($mxw992) { padding: 0px 5px; }
+        }
+
+        .date-time { font-size: $f-base - 2; color: $c-gray4; text-transform: uppercase; margin-top: 20px;
+            @include breakpoint($mxw992) { margin-top: 10px; font-size: 10px; }
+            @include breakpoint($mxw768) { margin-top: 10px; }
+        }
+
         .block-element { border-top: solid 1px $c-gray3; margin-top: 15px;
             .col-content { margin-top: 15px; padding-bottom: 10px;
+                @include breakpoint($mxw992) { padding-bottom: 0; }
+                @include breakpoint($mxw768) { margin-top: 0; padding-bottom: 15px; }
                 .row-header { position: relative;
-                    .lable-content { background: $c-red; font-size: $f-base - 2; padding: 5px 10px; color: $c-white; text-transform: uppercase; position: absolute; bottom: 0; left: 0; }
-                    .arrown-top { width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 20px solid $c-white; position: absolute; bottom: 0; right: 30px; }
+
+                    .arrown-top { width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 20px solid $c-white; position: absolute; bottom: 0; right: 30px;
+                        @include breakpoint($mxw992) { border-left-width: 15px; border-right-width: 15px; border-bottom-width: 15px; }
+                        @include breakpoint($mxw768) { border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; }
+                    }
                 }
                 .content {
-                    .date-time { font-size: $f-base - 2; color: $c-gray4; text-transform: uppercase; margin-top: 20px; }
-                    h5 { color: $c-blue; margin-top: 0; }
-                    .txt-content { color: $c-gray4; margin-bottom: 30px; }
+                    h5 { color: $c-blue; margin-top: 0;
+                        @include breakpoint($mxw768) { margin-bottom: 0; }
+                    }
+                    .txt-content { color: $c-gray4; margin-bottom: 30px;
+                        @include breakpoint($mxw992) { font-size: $f-base - 2; }
+                        @include breakpoint($mxw768) { display: none; }
+                    }
                 }
             }
             .row {
@@ -410,8 +529,12 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     .block-video { position: relative;
         .content-video { width: 100%; position: absolute; left: 0; top: 0; padding-top: 90px; color: $c-white;
             .logo-white { margin-left: 30px; }
-            .txt-world { font-size: 80px; font-weight: 300; margin-left: 50px; text-transform: uppercase; }
-            .txt-description { margin-left: 50px; font-size: $f-base + 1; margin-bottom: 30px }
+            .txt-world { font-size: 80px; font-weight: 300; margin-left: 50px; text-transform: uppercase;
+                @include breakpoint($mxw992) { font-size: 52px; }
+            }
+            .txt-description { margin-left: 50px; font-size: $f-base + 1; margin-bottom: 30px;
+                @include breakpoint($mxw992) { font-size: $f-base - 2; }
+            }
             .btn-white { margin-left: 50px; }
         }
         .bg-video { width: 100%;
@@ -421,11 +544,20 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     //    block partner
     .block-partner {
         > h2 { margin: 50px 0 60px 0; text-transform: uppercase; text-align: center;
-            span { font-weight: 700; }
+            @include breakpoint($mxw992) { margin: 40px 0; }
+            span { font-weight: 700;
+                @include breakpoint($mxw992) { font-weight: 300; }
+            }
         }
-        .text-description { font-family: $font-second; font-size: 22px; font-style: italic; margin-bottom: 20px; line-height: 32px; color: $c-gray5; }
-        .name-partner { color: $c-blue3; font-size: 22px; font-weight: 700; }
-        .title-job { font-size: $f-base + 2; color: $c-gray5; margin-bottom: 20px; }
+        .text-description { font-family: $font-second; font-size: 22px; font-style: italic; margin-bottom: 20px; line-height: 32px; color: $c-gray5;
+            @include breakpoint($mxw992) { font-size: 14px; line-height: 20px; }
+        }
+        .name-partner { color: $c-blue3; font-size: 22px; font-weight: 700;
+            @include breakpoint($mxw992) { font-size: $f-base; }
+        }
+        .title-job { font-size: $f-base + 2; color: $c-gray5; margin-bottom: 20px;
+            @include breakpoint($mxw992) { font-size: $f-base - 4; }
+        }
     }
 
     .footer { margin-top: 30px;
@@ -433,7 +565,9 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             .title { font-weight: 700; text-transform: uppercase; }
             ul { list-style: none; color: $c-gray-dark; margin-left: 0; padding-left: 0;
                 li { line-height: 18px;
-
+                    @include breakpoint($mxw992) { font-size: 10px;
+                        &.title { font-size: $f-base - 3; }
+                    }
                     a { color: $c-gray-dark; }
                 }
             }
@@ -444,6 +578,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             }
         }
         .footer-bottom { background: $c-footer; padding: 10px 15px; text-align: left; color: $c-white;
+            @include breakpoint($mxw992) { font-size: $f-base - 3; }
             .txt-copyright { display: inline-block; text-align: left; }
             .txt-terms { display: inline-block; text-align: right; float: right;
                 a { color: $c-white; margin-left: 10px; }
@@ -461,6 +596,9 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         .block-partner {
             .img-partner { width: 100%; margin: 0 auto; display: inline-block; text-align: center;
                 img { width: auto; text-align: center; display: inline-block; @include transition(all, 0.3s, ease);
+                    @include breakpoint($mxw992) {
+                        &.visible-sm { display: inline-block !important; }
+                    }
                     &:hover { @include transform(scale3d(1.1, 1.1, 1.1)); }
                 }
             }
@@ -468,11 +606,16 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     }
     //arrown nav
     .carousel-nav { width: 100%; position: absolute; top: 50%; @include translate(0, -50%); z-index: 4; cursor: pointer; font-size: $f-base + 4;
+        @include breakpoint($mxw768) { display: none; }
         .action-nav { background: $c-gray7; position: absolute; color: $c-blue4; @include transition(all, 0.3s, ease);
             &:hover { background: $c-blue4; color: $c-white; }
         }
-        .next { padding: 35px 10px 35px 20px; right: 0; }
-        .prev { padding: 35px 20px 35px 10px; left: 0; }
+        .next { padding: 35px 10px 35px 20px; right: 0;
+            @include breakpoint($mxw992) { padding: 23px 10px; }
+        }
+        .prev { padding: 35px 20px 35px 10px; left: 0;
+            @include breakpoint($mxw992) { padding: 23px 10px; }
+        }
     }
 
     //    slider banner
@@ -480,10 +623,15 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     .sliderBanner {
         .items { width: 100%; overflow: hidden; }
         .slider-banner { padding-top: 200px;
+            @include breakpoint($mxw992) { padding-top: 60px; padding-left: 50px; }
+            @include breakpoint($mxw768) { padding-top: 80px; padding-left: 0px; text-align: center }
             h1 { color: $c-white; text-transform: uppercase; font-weight: 700; }
-            .txt-description { font-size: $f-base + 2; margin-bottom: 20px; }
+            .txt-description { font-size: $f-base + 2; margin-bottom: 20px;
+                @include breakpoint($mxw768) { font-size: $f-base - 4; }
+            }
         }
         .item-nav { position: absolute; top: 50%; @include translate(0, -50%); z-index: 3;
+            @include breakpoint($mxw768) { display: none; }
             &.next-slide { right: 0; cursor: pointer; }
             &.prev-slide { left: 0; cursor: pointer; }
             img { width: auto; }
@@ -494,6 +642,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             position: relative;
             display: block;
             padding: 45px 10px;
+            @include breakpoint($mxw992) { padding: 25px 8px; }
             background-color: $c-white;
         }
 
@@ -510,13 +659,14 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         .nav-slit .next-img {
             position: absolute;
             top: 0;
-            width: 200px;
+            width: 198px;
             height: 100%;
             background-color: $c-blue4;
             -webkit-transition: -webkit-transform 0.3s 0.3s;
             transition: transform 0.3s 0.3s;
             -webkit-perspective: 1000px;
             perspective: 1000px;
+            @include breakpoint($mxw992) { width: 110px; }
         }
 
         .nav-slit .prev-slide .prev-img {
@@ -592,6 +742,21 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             transform: rotateX(0deg);
         }
 
+        @include breakpoint($mxw992) {
+            .slider-banner {
+                .btn-share {
+                    .txt-share { color: $c-white; }
+                }
+            }
+        }
+    }
+
+    @include breakpoint($mxw768) {
+        .owl-dots { position: absolute; left: 50%; bottom: percentage(27/530); @include transform(translate(-50%, 0));
+            .owl-dot { width: 12px; height: 12px; @include border-top-radius(100%); @include border-bottom-radius(100%); border: solid 1px $c-white; display: inline-block; margin-right: 10px; cursor: pointer;
+                &.active { background: $c-white; }
+            }
+        }
     }
 
     /*-----------------*/
@@ -599,7 +764,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     /*-----------------*/
 
     figure.effect-apollo {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 54, 106, 0.1);
     }
 
     figure.effect-apollo img {

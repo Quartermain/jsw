@@ -4,6 +4,9 @@ var jsw;
 jsw = {
     init: function () {
 
+        var wW = $(window).width();
+        var wH = $(window).height();
+
         if ($(".hero-banner").length) {
             jsw.heroBanner.init('.hero-banner .owl-carousel', ".hero-banner .dots-container");
             jsw.heroBanner.init('.sliderBanner .owl-carousel');
@@ -92,7 +95,6 @@ jsw = {
     backgroundVideo: function () {
         $('#bgVideo').YTPlayer({
             fitToBackground: false,
-            width: 500,
             videoId: 'FG0fTKAqZ5g',
             pauseOnScroll: true,
             playerVars: {
@@ -107,9 +109,6 @@ jsw = {
                 origin: window.location.origin,
                 start: 20,
             },
-            callback: function () {
-                console.log("playerFinshed");
-            }
         });
     },
 
@@ -121,8 +120,7 @@ jsw = {
                 }
                 ;
             });
-        }
-        ;
+        };
         if ($('.main-menu-right .title-link').length) {
             $('.main-menu-right .title-link').each(function () {
                 if ($(this).siblings('.sub-menu').length) {
@@ -143,15 +141,16 @@ jsw = {
             $(target).height(maxHeight);
         };
 
-        _setSameHeight('.block-same-height');
+        if (wW >= 768) {
+            _setSameHeight('.block-same-height');
+        }
 
     },
 
     sameHeightMenuTop: function () {
-        var heightRightMenu =  $(".main-menu-right .sub-menu .left-block").outerHeight();
-        $(".main-menu-right .sub-menu .right-block").css("height",heightRightMenu);
-    }
-
+        var heightRightMenu = $(".main-menu-right .sub-menu .left-block").outerHeight();
+        $(".main-menu-right .sub-menu .right-block").css("height", heightRightMenu);
+    },
 
 };
 
