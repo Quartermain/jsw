@@ -27,6 +27,7 @@ $c-blue2: #003669;
 $c-blue3: #00529f;
 $c-blue4: #214083;
 $c-red: #d71921;
+$c-red2: #930006;
 $c-gray-dark: #333;
 $c-gray1: #ededed;
 $c-gray2: #f4f4f4;
@@ -35,6 +36,7 @@ $c-gray4: #666;
 $c-gray5: #606060;
 $c-gray6: #f9f9f9;
 $c-gray7: #f6f7f9;
+$c-border: #404040;
 $c-footer: #464650;
 $f-base: 14px;
 $font-family: 'Lato', sans-serif;
@@ -212,32 +214,92 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
      ===============================================*/
     a { outline: none !important; }
     .wrapper-general { width: auto; margin-left: 15px; margin-right: 15px; top: 0; left: 0; position: absolute; z-index: 10; }
-    nav {
+    nav { position: relative;
         .menu-left { width: percentage(700/1140); float: left;
             .branding { background: url("../images/logo.png") no-repeat; width: 94px; height: 45px; margin: 10px 0 0 30px; display: inline-block; }
             .main-menu-left { margin: 0 30px 0 0; padding: 0; list-style: none; display: inline-block; float: right;
-                > li { font-weight: 700; display: inline-block; position: relative;
-                    a.title-link { margin-bottom: -1px; padding: 23px 10px 24px; color: $c_blue; display: block; position: relative; border-top: solid 4px transparent; border-left: 1px solid transparent; border-right: solid 1px transparent; z-index: 3;
-                        &:hover { background: $c-white; border-top: solid 4px $c-red; border-left: solid 1px $c-gray1; border-right: solid 1px $c-gray1; text-decoration: none;
-                            + .sub-menu { display: block; }
-                        }
-                    }
+                > li { font-weight: 700; border: none; padding: 0; float: left;
+                    a.title-link { color: $c-blue; text-decoration: none; float: left; position: relative; padding: 27px 11px 24px; }
                     &:hover {
-                        .sub-menu { display: block; visibility: visible; opacity: 1; }
+                        .sub-menu { display: block; @include transition(all, 0.5s, ease); opacity: 1; top:100%; }
+                        a.title-link { z-index: 3; background: #fff; border-top: solid 4px $c-red; border-left: solid 1px $c-gray1; border-right: solid 1px $c-gray1; padding: 23px 10px 24px; text-decoration: none; }
                     }
 
-                    .sub-menu { background: $c-white; font-weight: 400; font-size: $f-base; width: 285px; margin: 0; padding: 15px; border-left: solid 1px $c-gray1; border-top: solid 1px $c-gray1; position: absolute; left: 0; top: 100%; list-style: none; display: none; z-index: 2;
-                        opacity: 0; visibility: hidden; -webkit-transition: visibility 0.2s linear, opacity 0.2s linear; -moz-transition: visibility 0.2s linear, opacity 0.2s linear; -o-transition: visibility 0.2s linear, opacity 0.2s linear; line-height: 20px;
+                    &.has-submenu:hover a { padding-bottom: 25px; margin-bottom: -1px; }
+
+                    .sub-menu { background: $c-white; font-weight: 400; font-size: $f-base; width: 100%; margin: 0; padding: 45px 0 0 0; border-left: solid 1px $c-gray1; border-top: solid 1px $c-gray1; position: absolute; left: 0; top: 100%; list-style: none; z-index: 2;
+                        line-height: 20px; @include box-shadow(0px, 1px, 1px, rgba(0, 0, 0, 0.25));
+                        -webkit-transition: visibility 0.2s linear, opacity 0.2s linear;
+                        -moz-transition: visibility 0.2s linear, opacity 0.2s linear;
+                        -o-transition: visibility 0.2s linear, opacity 0.2s linear;
+                        @include transition(all, 0.5s, ease); opacity: 0; top:-500%;
+
                         ul { margin: 0; padding: 0; list-style: none; display: inline-block; vertical-align: top; }
-                        .block-submenu { background: $c-gray1; margin-left: 10px; display: inline-block; vertical-align: top; }
+
+                        .block-menu { width: 100%; text-align: center;
+                            > li { margin: 0 16px; display: inline-block;
+                                a { text-decoration: none; display: inline-block; padding-bottom: 0px;
+                                    border-bottom: solid 10px transparent;
+                                    > img { margin-bottom: 5px; }
+                                    &:hover { border-bottom: solid 10px $c-blue; }
+                                }
+                            }
+                            .title { font-size: 24px; font-weight: 300; text-transform: capitalize; margin-bottom: 15px; color: $c-blue; text-align: left; }
+                        }
                     }
                 }
             }
         }
         .menu-right { font-weight: 700; background: $c-blue; width: percentage(440/1140); float: right;
             .main-menu-right { float: left; margin-bottom: 0; list-style: none;
-                > li { padding: 27px 10px 24px; display: inline-block;
-                    a { color: $c-white; text-decoration: none; }
+                > li { float: left; padding: 0; border: none;
+                    a.title-link { color: $c-white; text-decoration: none; float: left; position: relative; padding: 27px 11px 24px; }
+                    &:hover {
+                        .sub-menu { top: 100%; @include transition(all, 0.5s, ease); opacity: 1; }
+                        a.title-link { z-index: 3; background: $c-blue; border-top: solid 4px $c-red; border-left: solid 1px rgba(255, 255, 255, 0.1); border-right: solid 1px rgba(255, 255, 255, 0.1); padding: 23px 10px 24px; text-decoration: none; color: $c-white; }
+                    }
+
+                    &.has-submenu:hover a { padding-bottom: 25px; margin-bottom: -1px; }
+
+                    .sub-menu { background: $c-blue; font-weight: 400; font-size: $f-base; width: 100%; margin: 0; padding: 0; border-top: solid 1px rgba(255, 255, 255, 0.1); position: absolute; left: 0; top: 100%; list-style: none; z-index: 2;
+                        line-height: 20px; @include box-shadow(0px, 1px, 1px, rgba(0, 0, 0, 0.25));
+                        -webkit-transition: visibility 0.2s linear, opacity 0.2s linear;
+                        -moz-transition: visibility 0.2s linear, opacity 0.2s linear;
+                        -o-transition: visibility 0.2s linear, opacity 0.2s linear;
+                        position: absolute; opacity: 0; top:-500%;
+                        @include transition(all, 0.5s, ease);
+
+                        ul { margin: 0; padding: 0; list-style: none; display: inline-block; vertical-align: top; }
+
+                        .left-block { width: percentage(765/1140); float: left; padding-top: 40px; padding-right: 32px;
+                            .block-menu { width: auto; text-align: center; float: right;
+                                > li { margin: 0 16px; display: inline-block;
+                                    a { text-decoration: none; display: inline-block;
+                                        border-bottom: solid 10px transparent; padding-bottom: 0px;
+                                        > img { margin-bottom: 15px; }
+                                        &:hover { border-bottom: solid 10px $c-white; }
+                                    }
+                                }
+                                .title { font-size: 24px; font-weight: 300; text-transform: capitalize; margin-bottom: 15px; color: $c-white; text-align: left; }
+                            }
+                        }
+
+                        .right-block { width: percentage(375/1140); float: left;
+                            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#154193+0,17469e+23,17469e+100 */
+                            background: #154193; /* Old browsers */
+                            background: -moz-linear-gradient(left, #154193 0%, #17469e 23%, #17469e 100%); /* FF3.6-15 */
+                            background: -webkit-linear-gradient(left, #154193 0%, #17469e 23%, #17469e 100%); /* Chrome10-25,Safari5.1-6 */
+                            background: linear-gradient(to right, #154193 0%, #17469e 23%, #17469e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#154193', endColorstr='#17469e', GradientType=1); /* IE6-9 */
+
+                            .link-right {padding-left: 40px; padding-top: 73px;
+                                li { line-height: 35px;
+                                    a {color: $c-white; font-size: 22px; font-weight: 300; text-decoration: none; }
+                                }
+                            }
+
+                        }
+                    }
                 }
             }
             .btn-search { font-size: $f-base + 4; margin: 20px 35px 0 0; float: right; color: $c-white; position: relative; z-index: 1;
@@ -273,12 +335,16 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             }
         }
         .btn-scroll-down { position: absolute; width: 100%; bottom: 10%; z-index: 3;
-            .btn-down { font-size: $f-base + 4; background: $c-red; width: 54px; padding: 10px 0; color: $c-white; text-align: center; cursor: pointer; display: block; @include border-radius(2px); }
+            .btn-down { font-size: $f-base + 4; background: $c-red; width: 54px; padding: 10px 0; color: $c-white; text-align: center; cursor: pointer; display: block; @include border-radius(2px);
+                &:hover { background: $c-red2; @include transition(all, 0.3s, ease); }
+            }
         }
     }
 
     .btn-scroll-up {
-        .btn-top { font-size: $f-base + 4; background: $c-red; width: 54px; padding: 10px 0; color: $c-white; text-align: center; cursor: pointer; display: block; @include border-radius(2px); float: right; }
+        .btn-top { font-size: $f-base + 4; background: $c-red; width: 54px; padding: 10px 0; color: $c-white; text-align: center; cursor: pointer; display: block; @include border-radius(2px); float: right;
+            &:hover { background: $c-red2; @include transition(all, 0.3s, ease); }
+        }
     }
 
     //    block content
@@ -391,7 +457,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
 
     //    Partner
 
-    .sliderPartner { position: relative; padding-bottom:30px;
+    .sliderPartner { position: relative; padding-bottom: 30px;
         .block-partner {
             .img-partner { width: 100%; margin: 0 auto; display: inline-block; text-align: center;
                 img { width: auto; text-align: center; display: inline-block; @include transition(all, 0.3s, ease);
@@ -420,32 +486,11 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         .item-nav { position: absolute; top: 50%; @include translate(0, -50%); z-index: 3;
             &.next-slide { right: 0; cursor: pointer; }
             &.prev-slide { left: 0; cursor: pointer; }
-
-            //&.next-slide {right: 0; cursor: pointer;
-            //    .next-btn { color: $c-blue4; background: $c-gray7; width: 50px; padding: 35px 10px 35px 20px; float: right;
-            //        &:hover {@include transition(all, 0.3s, ease); @include translate(100%,0);
-            //            + .next-img { @include translate(-75%,0)}
-            //        }
-            //    }
-            //    .next-img { float: right; @include translate(150%,0); @include transition(all, 0.3s, ease); position: absolute;}
-            //}
-            //
-            //&.prev-slide {left: 0; cursor: pointer;
-            //    .prev-btn { color: $c-blue4; background: $c-gray7; width: 50px; padding: 35px 10px 35px 20px; float: left;
-            //        &:hover {@include transition(all, 0.3s, ease); @include translate(-100%,0);
-            //            + .prev-img { @include translate(0,0)}
-            //        }
-            //    }
-            //    .prev-img { float: left; @include translate(-150%,0); @include transition(all, 0.3s, ease); position: absolute;}
-            //}
-            //
-            //.title-btn{background: $c-blue4; font-size: $f-base + 2; color: $c-white; text-align: center; padding: 10px 0;}
-            //
             img { width: auto; }
         }
 
         .nav-slit .prev-btn,
-        .nav-slit .next-btn{
+        .nav-slit .next-btn {
             position: relative;
             display: block;
             padding: 45px 10px;
@@ -453,7 +498,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         }
 
         .nav-slit .prev-btn i.fa,
-        .nav-slit .next-btn i.fa{
+        .nav-slit .next-btn i.fa {
             -webkit-transition: -webkit-transform 0.3s 0.3s;
             transition: transform 0.3s 0.3s;
             fill: #fff;
@@ -462,7 +507,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         }
 
         .nav-slit .prev-img,
-        .nav-slit .next-img{
+        .nav-slit .next-img {
             position: absolute;
             top: 0;
             width: 200px;
@@ -510,7 +555,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         }
 
         .nav-slit .prev-img img,
-        .nav-slit .next-img img{
+        .nav-slit .next-img img {
             position: absolute;
             top: 0;
             left: 0;
@@ -535,7 +580,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         }
 
         .nav-slit .item-nav:hover .prev-img,
-        .nav-slit .item-nav:hover .next-img{
+        .nav-slit .item-nav:hover .next-img {
             -webkit-transform: translateX(0);
             transform: translateX(0);
         }
@@ -607,12 +652,12 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
 
     // Video youtube
 
-    #video{
+    #video {
         position: relative;
         background: transparent;
     }
 
-    .ytplayer-container{
+    .ytplayer-container {
         top: 0;
         z-index: -1;
     }

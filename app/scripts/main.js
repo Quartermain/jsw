@@ -1,6 +1,7 @@
 'use strict';
 
-var jsw = {
+var jsw;
+jsw = {
     init: function () {
 
         if ($(".hero-banner").length) {
@@ -12,6 +13,10 @@ var jsw = {
         jsw.scrollDown();
         jsw.scrollTop();
         jsw.backgroundVideo();
+        jsw.hasSubMenu();
+        jsw.sameHeight();
+        jsw.sameHeightMenuTop();
+
     },
 
     heroBanner: {
@@ -86,12 +91,69 @@ var jsw = {
 
     backgroundVideo: function () {
         $('#bgVideo').YTPlayer({
-            fitToBackground: true,
-            videoId: 'FG0fTKAqZ5g'
+            fitToBackground: false,
+            width: 500,
+            videoId: 'FG0fTKAqZ5g',
+            pauseOnScroll: true,
+            playerVars: {
+                modestbranding: 1,
+                autoplay: 0,
+                controls: 0,
+                showinfo: 0,
+                wmode: 'transparent',
+                branding: 0,
+                rel: 0,
+                autohide: 0,
+                origin: window.location.origin,
+                start: 20,
+            },
+            callback: function () {
+                console.log("playerFinshed");
+            }
         });
     },
 
-}
+    hasSubMenu: function () {
+        if ($('.main-menu-left .title-link').length) {
+            $('.main-menu-left .title-link').each(function () {
+                if ($(this).siblings('.sub-menu').length) {
+                    $(this).parent().addClass('has-submenu');
+                }
+                ;
+            });
+        }
+        ;
+        if ($('.main-menu-right .title-link').length) {
+            $('.main-menu-right .title-link').each(function () {
+                if ($(this).siblings('.sub-menu').length) {
+                    $(this).parent().addClass('has-submenu');
+                }
+                ;
+            });
+        }
+    },
+
+    sameHeight: function () {
+        var _setSameHeight = function (target) {
+            var heights = $(target).map(function () {
+                    $(this).height("100%");
+                    return $(this).height();
+                }).get(),
+                maxHeight = Math.max.apply(null, heights);
+            $(target).height(maxHeight);
+        };
+
+        _setSameHeight('.block-same-height');
+
+    },
+
+    sameHeightMenuTop: function () {
+        var heightRightMenu =  $(".main-menu-right .sub-menu .left-block").outerHeight();
+        $(".main-menu-right .sub-menu .right-block").css("height",heightRightMenu);
+    }
+
+
+};
 
 $(document).ready(function () {
     jsw.init();
