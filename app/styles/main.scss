@@ -52,19 +52,6 @@ $mxw992: max-width 991px;
  ===============================================*/
 .mixin { }
 
-/* transition */
-@mixin transition(      $property, $duration, $function) {
-    -webkit-transition: $property $duration $function; /* Saf3.2+, Chrome */
-    -moz-transition: $property $duration $function; /* FF3.7+ */
-    -o-transition: $property $duration $function; /* Opera 10.5 */
-    transition: $property $duration $function;
-}
-
-/* border radius */
-@mixin border-radius($radius, $vert) {
-    @if $vert == top { border-top-right-radius: $radius; border-top-left-radius: $radius; -moz-border-top-right-radius: $radius; -moz-border-top-left-radius: $radius; -webkit-border-top-right-radius: $radius; -webkit-border-top-left-radius: $radius; } @else if $vert == bottom { border-bottom-right-radius: $radius; border-bottom-left-radius: $radius; -moz-border-bottom-right-radius: $radius; -moz-border-bottom-left-radius: $radius; -webkit-border-bottom-right-radius: $radius; -webkit-border-bottom-left-radius: $radius; } @else { border-radius: $radius; -moz-border-radius: $radius; -webkit-border-radius: $radius; }
-}
-
 /* box shadow */
 @mixin box-shadow($top, $left, $blur, $color, $inset: false, $important: false) {
     @if $inset {
@@ -98,14 +85,6 @@ $mxw992: max-width 991px;
     border-radius: $radius;
 }
 
-@mixin tabs-shadow() {
-    .nav-tabs li {
-        a { @extend .shadow-inner-blr; }
-        &:first-child a { @extend .shadow-inner-br; }
-        &:last-child a { @extend .shadow-inner-bl; }
-        &.active a { @extend .shadow-none; }
-    }
-}
 
 /**************************************************************************************************
  *      Typer
@@ -120,6 +99,7 @@ h1 {
 h2 {
     font-size: 54px;
     @include breakpoint($mxw992) { font-size: 36px; margin-top: 15px; line-height: 36px; }
+    @include breakpoint($mxw768) { font-size: 25px; margin-top: 15px; line-height: 100%; }
 }
 
 h3 {
@@ -162,6 +142,7 @@ h5 {
     @include breakpoint($mxw992) { font-size: $f-base + 2; padding: 10px 15px;
         &.button--shikoba .button__icon { top: 36%; right: 9px; }
     }
+    @include breakpoint($mxw768) { font-size: $f-base - 2; padding: 13px 17px; font-weight: 700; }
     &:hover { background: $c-blue; color: #fff; position: relative; border: none; padding-right: 35px; @include transition(all, 0.3s, ease);
         @include breakpoint($mxw992) { padding-right: 25px; }
     }
@@ -242,6 +223,9 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
      ===============================================*/
     a { outline: none !important; }
     .wrapper-general { width: auto; margin-left: 15px; margin-right: 15px; top: 0; left: 0; position: absolute; z-index: 10; }
+
+    //navigation
+
     nav { position: relative;
         .menu-left { width: percentage(700/1140); float: left;
             .branding { background: url("../images/logo.png") no-repeat; width: 94px; height: 45px; margin: 10px 0 0 30px; display: inline-block; }
@@ -350,6 +334,10 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
             &::after { content: ""; background: $c-blue; width: 100000px; height: 72px; position: absolute; }
         }
     }
+
+    //end navigation
+
+
     // Hero slide
     .hero-banner,
     .sliderBanner { position: relative;
@@ -367,14 +355,14 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
                 }
                 .txt-plans {
                     font-size: 18px; font-weight: 400; margin-bottom: 30px;
-                    @include breakpoint($mxw768) { font-size: 13px; margin-bottom: 30px; }
+                    @include breakpoint($mxw768) { font-size: 13px; margin-bottom: 15px; margin-top: 30px; }
                 }
 
             }
         }
 
         .navi-dots { position: absolute; width: 100%; top: 60%; z-index: 3;
-            @include breakpoint($mxw768) { top: 75%; }
+            @include breakpoint($mxw768) { top: 78%; }
             .dots-container {
                 .owl-dot { width: 12px; height: 12px; @include border-top-radius(100%); @include border-bottom-radius(100%); border: solid 1px $c-white; display: inline-block; margin-right: 10px; cursor: pointer;
                     &.active { background: $c-white; }
@@ -384,6 +372,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         .btn-scroll-down { position: absolute; width: 100%; bottom: 10%; z-index: 3;
             @include breakpoint($mxw768) { bottom: 4%; }
             .btn-down { font-size: $f-base + 4; background: $c-red; width: 54px; padding: 10px 0; color: $c-white; text-align: center; cursor: pointer; display: block; @include border-radius(2px);
+                @include breakpoint($mxw768) { font-size: $f-base; width: 36px; height: 36px; }
                 &:hover { background: $c-red2; @include transition(all, 0.3s, ease); }
             }
         }
@@ -400,7 +389,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
 
     .container-block { background: $c-gray2; padding-bottom: 40px;
         @include breakpoint($mxw992) { padding-top: 30px; }
-        @include breakpoint($mxw768) { padding-bottom: 10px; }
+        @include breakpoint($mxw768) { padding-top: 15px; padding-bottom: 15px; }
         h1 { color: $c-blue; }
         .txt-block { font-style: $f-base + 1; margin: 20px 0; color: $c-gray4;
             @include breakpoint($mxw992) { font-size: $f-base - 2; margin: 15px 0; }
@@ -408,7 +397,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     }
     .block-content1 { padding: 70px 0 40px 0;
         @include breakpoint($mxw992) { padding-bottom: 15px; padding-top: 15px }
-        @include breakpoint($mxw768) { padding-top: 15px; padding-bottom: 20px; }
+        @include breakpoint($mxw768) { padding-top: 0; padding-bottom: 20px; }
         .left-block { margin-left: 60px;
             @include breakpoint($mxw992) { margin-left: 30px;
                 h2 { margin-top: 10px; }
@@ -466,6 +455,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         @include breakpoint($mxw768) { margin-bottom: 30px; }
         h1 { text-align: center; margin-top: 70px; margin-bottom: 30px;
             @include breakpoint($mxw992) { margin-top: 35px; margin-bottom: 15px; font-size: 39px; }
+            @include breakpoint($mxw768) { margin-top: 20px; margin-bottom: 15px; font-size: 25px; }
         }
         .block-header { position: relative;
             .content-whaton { background: $c-blue; padding: 20px; width: percentage(490/1140); position: absolute; right: 0; bottom: 0; color: $c-white;
@@ -499,6 +489,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         }
 
         .block-element { border-top: solid 1px $c-gray3; margin-top: 15px;
+            @include breakpoint($mxw768) {border: none}
             .col-content { margin-top: 15px; padding-bottom: 10px;
                 @include breakpoint($mxw992) { padding-bottom: 0; }
                 @include breakpoint($mxw768) { margin-top: 0; padding-bottom: 15px; }
@@ -528,35 +519,70 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     }
     .block-video { position: relative;
         .content-video { width: 100%; position: absolute; left: 0; top: 0; padding-top: 90px; color: $c-white;
-            .logo-white { margin-left: 30px; }
+            @include breakpoint($mxw768) { padding-top: 0px; text-align: center; }
+            .logo-white { margin-left: 30px;
+                @include breakpoint($mxw768) { margin-left: 0; }
+            }
             .txt-world { font-size: 80px; font-weight: 300; margin-left: 50px; text-transform: uppercase;
                 @include breakpoint($mxw992) { font-size: 52px; }
+                @include breakpoint($mxw768) { margin-left: 0; font-size: 30px; }
             }
             .txt-description { margin-left: 50px; font-size: $f-base + 1; margin-bottom: 30px;
                 @include breakpoint($mxw992) { font-size: $f-base - 2; }
+                @include breakpoint($mxw768) { font-size: $f-base - 4; margin-left: 0; margin-bottom: 10px; }
             }
-            .btn-white { margin-left: 50px; }
+            .btn-white { margin-left: 50px;
+                @include breakpoint($mxw768) { margin-left: 0; }
+            }
         }
         .bg-video { width: 100%;
         }
     }
+    //    Partner
 
-    //    block partner
-    .block-partner {
-        > h2 { margin: 50px 0 60px 0; text-transform: uppercase; text-align: center;
-            @include breakpoint($mxw992) { margin: 40px 0; }
-            span { font-weight: 700;
-                @include breakpoint($mxw992) { font-weight: 300; }
+    .sliderPartner { position: relative; padding-bottom: 30px;
+        .block-partner {
+            > h2 { margin: 50px 0 60px 0; text-transform: uppercase; text-align: center;
+                @include breakpoint($mxw992) { margin: 40px 0; }
+                @include breakpoint($mxw768) { margin: 20px 0 20px; }
+                span { font-weight: 700;
+                    @include breakpoint($mxw992) { font-weight: 300; }
+                }
+            }
+            .text-description { font-family: $font-second; font-size: 22px; font-style: italic; margin-bottom: 20px; line-height: 32px; color: $c-gray5;
+                @include breakpoint($mxw992) { font-size: 14px; line-height: 20px; }
+                @include breakpoint($mxw768) { font-size: 14px; line-height: 16px; text-align: center; margin-top: 25px; }
+            }
+            .name-partner { color: $c-blue3; font-size: 22px; font-weight: 700;
+                @include breakpoint($mxw992) { font-size: $f-base; }
+                @include breakpoint($mxw768) { font-size: $f-base + 1; text-align: center }
+            }
+            .title-job { font-size: $f-base + 2; color: $c-gray5; margin-bottom: 20px;
+                @include breakpoint($mxw992) { font-size: $f-base - 4; }
+                @include breakpoint($mxw768) { font-size: $f-base - 2; text-align: center }
+            }
+            .img-partner { width: 100%; margin: 0 auto; display: inline-block; text-align: center;
+                img { width: auto; text-align: center; display: inline-block; @include transition(all, 0.3s, ease);
+                    @include breakpoint($mxw992) {
+                        &.visible-sm { display: inline-block !important; }
+                    }
+                    &:hover { @include transform(scale3d(1.1, 1.1, 1.1)); }
+                }
+            }
+            @include breakpoint($mxw768) {
+                .btn-partner { text-align: center; }
             }
         }
-        .text-description { font-family: $font-second; font-size: 22px; font-style: italic; margin-bottom: 20px; line-height: 32px; color: $c-gray5;
-            @include breakpoint($mxw992) { font-size: 14px; line-height: 20px; }
-        }
-        .name-partner { color: $c-blue3; font-size: 22px; font-weight: 700;
-            @include breakpoint($mxw992) { font-size: $f-base; }
-        }
-        .title-job { font-size: $f-base + 2; color: $c-gray5; margin-bottom: 20px;
-            @include breakpoint($mxw992) { font-size: $f-base - 4; }
+        @include breakpoint($mxw768) {
+            padding-bottom: 0;
+            .owl-stage-outer {padding-bottom: 60px;}
+            .owl-dots {
+
+                .owl-dot { border: solid 1px $c-blue;
+                    &.active { background: $c-blue; }
+                }
+
+            }
         }
     }
 
@@ -590,20 +616,6 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         .colum-element { width: 20%; float: left; }
     }
 
-    //    Partner
-
-    .sliderPartner { position: relative; padding-bottom: 30px;
-        .block-partner {
-            .img-partner { width: 100%; margin: 0 auto; display: inline-block; text-align: center;
-                img { width: auto; text-align: center; display: inline-block; @include transition(all, 0.3s, ease);
-                    @include breakpoint($mxw992) {
-                        &.visible-sm { display: inline-block !important; }
-                    }
-                    &:hover { @include transform(scale3d(1.1, 1.1, 1.1)); }
-                }
-            }
-        }
-    }
     //arrown nav
     .carousel-nav { width: 100%; position: absolute; top: 50%; @include translate(0, -50%); z-index: 4; cursor: pointer; font-size: $f-base + 4;
         @include breakpoint($mxw768) { display: none; }
@@ -624,10 +636,16 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         .items { width: 100%; overflow: hidden; }
         .slider-banner { padding-top: 200px;
             @include breakpoint($mxw992) { padding-top: 60px; padding-left: 50px; }
-            @include breakpoint($mxw768) { padding-top: 80px; padding-left: 0px; text-align: center }
-            h1 { color: $c-white; text-transform: uppercase; font-weight: 700; }
+            @include breakpoint($mxw768) { padding-top: 60px; padding-left: 0px; text-align: center;
+                .share-social-mobile { position: absolute; right: 10px; top: 10px;
+                    a { color: $c-white; font-size: 20px; }
+                }
+            }
+            h1 { color: $c-white; text-transform: uppercase; font-weight: 700;
+                @include breakpoint($mxw768) { font-size: 30px; }
+            }
             .txt-description { font-size: $f-base + 2; margin-bottom: 20px;
-                @include breakpoint($mxw768) { font-size: $f-base - 4; }
+                @include breakpoint($mxw768) { font-size: $f-base - 3; }
             }
         }
         .item-nav { position: absolute; top: 50%; @include translate(0, -50%); z-index: 3;
