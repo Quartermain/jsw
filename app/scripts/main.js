@@ -4,8 +4,8 @@ var jsw;
 jsw = {
     init: function () {
 
-        var wW = $(window).width();
-        var wH = $(window).height();
+        var WidthWindow = $(window).width();
+        var HeightWindow = $(window).height();
 
         if ($(".hero-banner").length) {
             jsw.heroBanner.init('.hero-banner .owl-carousel', ".hero-banner .dots-container");
@@ -117,18 +117,9 @@ jsw = {
             $('.main-menu-left .title-link').each(function () {
                 if ($(this).siblings('.sub-menu').length) {
                     $(this).parent().addClass('has-submenu');
-                }
-                ;
+                };
             });
         };
-        if ($('.main-menu-right .title-link').length) {
-            $('.main-menu-right .title-link').each(function () {
-                if ($(this).siblings('.sub-menu').length) {
-                    $(this).parent().addClass('has-submenu');
-                }
-                ;
-            });
-        }
     },
 
     sameHeight: function () {
@@ -141,7 +132,7 @@ jsw = {
             $(target).height(maxHeight);
         };
 
-        if (wW >= 768) {
+        if ( $(window).width >= 768) {
             _setSameHeight('.block-same-height');
         }
 
