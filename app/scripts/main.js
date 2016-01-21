@@ -1,5 +1,30 @@
 'use strict';
 
+(function ($, sr) {
+    var debounce = function (func, threshold, execAsap) {
+        var timeout;
+        return function debounced() {
+            var obj = this, args = arguments;
+
+            function delayed() {
+                if (!execAsap)
+                    func.apply(obj, args);
+                timeout = null;
+            };
+            if (timeout)
+                clearTimeout(timeout);
+            else if (execAsap)
+                func.apply(obj, args);
+            timeout = setTimeout(delayed, threshold || 100);
+        };
+    }
+    // smartresize
+    jQuery.fn[sr] = function (fn) {
+        return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr);
+    };
+})(jQuery, 'smartresize');
+
+//=======================================================================================================================
 var jsw;
 jsw = {
     init: function () {
@@ -17,9 +42,21 @@ jsw = {
         jsw.scrollTop();
         jsw.backgroundVideo();
         jsw.hasSubMenu();
-        jsw.sameHeight();
+        jsw.sameHeight('.block-same-height');
+        jsw.btnHamburger();
+        jsw.hasSubmenu();
         jsw.sameHeightMenuTop();
 
+
+    },
+
+    setSameHeightFn: function (target) {
+        var heights = $(target).map(function () {
+                $(this).height("100%");
+                return $(this).height();
+            }).get(),
+            maxHeight = Math.max.apply(null, heights);
+        $(target).height(maxHeight);
     },
 
     heroBanner: {
@@ -117,30 +154,62 @@ jsw = {
             $('.main-menu-left .title-link').each(function () {
                 if ($(this).siblings('.sub-menu').length) {
                     $(this).parent().addClass('has-submenu');
-                };
+                }
+                ;
             });
-        };
+        }
+        ;
     },
 
-    sameHeight: function () {
-        var _setSameHeight = function (target) {
-            var heights = $(target).map(function () {
-                    $(this).height("100%");
-                    return $(this).height();
-                }).get(),
-                maxHeight = Math.max.apply(null, heights);
-            $(target).height(maxHeight);
-        };
-
-        if ( $(window).width >= 768) {
-            _setSameHeight('.block-same-height');
+    sameHeight: function (target, disOnMobile) {
+        function sameHeightInit() {
+            if ($(target).length) {
+                if (disOnMobile !== undefined && disOnMobile !== false) {
+                    $(target).height('auto');
+                    jsw.setSameHeightFn(target);
+                } else {
+                    if ($(window).width() >= 768) {
+                        $(target).height('auto');
+                        jsw.setSameHeightFn(target);
+                    } else {
+                        $(target).height('auto');
+                    }
+                }
+            }
         }
 
+        sameHeightInit();
+        $(window).smartresize(function () {
+            sameHeightInit();
+        });
     },
 
     sameHeightMenuTop: function () {
-        var heightRightMenu = $(".main-menu-right .sub-menu .left-block").outerHeight();
-        $(".main-menu-right .sub-menu .right-block").css("height", heightRightMenu);
+        function setMnSameHeight() {
+            if ($(window).width() >= 992) {
+                var heightRightMenu = $(".main-menu-right .sub-menu .left-block").outerHeight();
+                $(".main-menu-right .sub-menu .right-block").css("height", heightRightMenu);
+            }
+        }
+
+        setMnSameHeight();
+    },
+
+    hasSubmenu: function () {
+        $(".has-submenu .title-link").on("click", function () {
+            if ($(window).width() < 992) {
+                $(this).next(".sub-menu").toggleClass("block-sub-menu");
+                $(this).toggleClass("active-submenu");
+                $(this).find("i").toggleClass("fa-arrow-right").toggleClass("fa-arrow-down");
+            }
+        });
+    },
+
+    btnHamburger: function () {
+        $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+            $(this).toggleClass('open');
+            $(".menu-container").toggleClass("block-sub-menu");
+        });
     },
 
 };
