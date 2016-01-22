@@ -607,6 +607,9 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         }
         .block-header { position: relative;
             .content-whaton { background: $c-blue; padding: 20px; width: percentage(490/1140); position: absolute; right: 0; bottom: 0; color: $c-white;
+                .btn-white { border: solid 1px transparent;
+                    &:hover { border-color: $c-white; }
+                }
                 .txt-title-header { margin-bottom: 5px; }
                 @include breakpoint($mxw992) { padding: 13px 13px 13px 20px; }
                 .txt-title-header {
@@ -621,6 +624,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
                 .short-content { font-size: $f-base + 1; margin: 20px 0; color: rgba(255, 255, 255, 0.8);
                     @include breakpoint($mxw992) { font-size: $f-base - 2; margin: 15px 0; }
                 }
+
             }
         }
 
