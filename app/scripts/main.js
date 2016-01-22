@@ -50,6 +50,9 @@ jsw = {
         //show search when click
         jsw.showSearchMenu();
 
+        //Campain Height
+        jsw.campainHeight();
+
 
     },
 
@@ -84,8 +87,8 @@ jsw = {
                 nav: navOpt,
                 dots: true,
                 loop: true,
-                autoplay:true,
-                autoplayTimeout:5000,
+                autoplay: true,
+                autoplayTimeout: 5000,
                 dotsContainer: dotsOpt,
                 responsiveClass: true
             });
@@ -225,7 +228,13 @@ jsw = {
         $(".search-animation .btn-search").on("click", function () {
             $(".search-animation .box-search").toggleClass("show");
         });
+    },
 
+    campainHeight: function () {
+        if ($("body .container-menu-top").length) {
+            var heightMenu = $("body .container-menu-top").outerHeight();
+            $("body .main-container").css("margin-top", heightMenu);
+        }
     },
 
 };

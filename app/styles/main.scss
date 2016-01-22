@@ -52,6 +52,7 @@ $font-second: 'Gentium Basic', serif;
 
 $mxw768: max-width 767px;
 $mxw992: max-width 991px;
+$mnw992: min-width 992px;
 $mxw1200: max-width 1199px;
 
 /*===============================================
@@ -213,15 +214,18 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
 
     //navigation
 
-    nav { position: relative; font-size: $f-base + 2;
+
+    .container-menu-top { position: fixed; width: 100%; height: auto; z-index: 100; top: 0; }
+
+    nav { position: relative; font-size: $f-base + 2; background: $c-white;
         .branding { background: url("../images/logo.png") no-repeat; width: 94px; height: 45px; margin: 10px 0 0 30px; display: inline-block; float: left; cursor: pointer;
             @include breakpoint($mxw1200) { background: url("../images/logo-tablet.png") no-repeat; width: 66px; height: 32px; margin: 10px 0 0 0px; display: inline-block; float: left; }
             @include breakpoint($mxw992) { background: url("../images/logo-tablet.png") no-repeat; width: 66px; height: 32px; margin: 10px 0 0 30px; display: inline-block; float: left; }
         }
         .menu-left { width: percentage(540/1140); float: left;
-            @include breakpoint($mxw1200) { width: percentage(570/1140); }
+            @include breakpoint($mxw1200) { width: percentage(585/1140); }
             .main-menu-left { margin: 0 30px 0 0; padding: 0; list-style: none; display: inline-block; float: right;
-                @include breakpoint($mxw1200) { margin: 0 10px 0 0 }
+                @include breakpoint($mxw1200) { margin: 0 }
                 > li { font-weight: 700; border: none; padding: 0; float: left;
                     a.title-link { color: $c-blue; text-decoration: none; float: left; position: relative; padding: 27px 11px 24px; @include transition(all, 0.5s, ease); }
                     &:hover {
@@ -331,6 +335,7 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
                 }
             }
             .btn-search { font-size: $f-base + 4; margin: 23px 35px 0 0; float: right; color: $c-white; position: relative; z-index: 3;
+                @include breakpoint($mxw1200) { margin-right: 20px; }
                 a { color: $c-white; }
             }
 
@@ -503,9 +508,9 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
         .items { position: relative;
             .hero-slider,
             .slider-banner { position: absolute; left: 0; top: 0; width: 100%; color: $c-white;
-                .txt-title {
-                    font-size: 36px; margin-top: 90px;
-                    @include breakpoint($mxw992) { font-size: 36px; }
+                .txt-title { font-size: 36px; margin-top: 90px;
+                    @include breakpoint($mxw1200) { font-size: 36px;  margin-top: 5%; }
+                    @include breakpoint($mxw992) { font-size: 36px;}
                     @include breakpoint($mxw768) { margin-top: 25px; font-size: $f-base + 2; }
                 }
                 .txt-west {
@@ -521,6 +526,7 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
         }
 
         .navi-dots { position: absolute; width: 100%; top: 60%; z-index: 3;
+            @include breakpoint($mxw1200) { top: 70%; }
             @include breakpoint($mxw768) { top: 78%; }
             .dots-container {
                 .owl-dot { width: 12px; height: 12px; @include border-top-radius(100%); @include border-bottom-radius(100%); border: solid 1px $c-white; display: inline-block; margin-right: 10px; cursor: pointer;
