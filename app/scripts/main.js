@@ -80,6 +80,7 @@ jsw = {
                 margin: 0,
                 nav: navOpt,
                 dots: true,
+                slideSpeed: 50000,
                 dotsContainer: dotsOpt,
                 responsiveClass: true
             });
