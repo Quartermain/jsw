@@ -486,7 +486,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     .sliderBanner { position: relative;
         .owl-carousel {
             .owl-stage-outer {
-                .owl-stage { @include transition(all, 1s, ease,  !important) ; }
+                .owl-stage { @include transition(all, 1s, ease, !important); }
             }
         }
         .items { position: relative;
@@ -607,6 +607,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         }
         .block-header { position: relative;
             .content-whaton { background: $c-blue; padding: 20px; width: percentage(490/1140); position: absolute; right: 0; bottom: 0; color: $c-white;
+                .txt-title-header { margin-bottom: 5px; }
                 @include breakpoint($mxw992) { padding: 13px 13px 13px 20px; }
                 .txt-title-header {
                     .label-stell { font-size: $f-base - 2; background: $c-red; padding: 5px 10px; text-transform: uppercase; color: $c-white; }
@@ -959,7 +960,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     /*-----------------*/
 
     figure.effect-apollo {
-        background: rgba(0, 54, 106, 0.1);
+        //background: rgba(0, 54, 106, 0.1);
     }
 
     figure.effect-apollo img {
@@ -982,7 +983,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.2);
+        //background: rgba(255, 255, 255, 0.2);
         content: '';
         -webkit-transition: -webkit-transform 0.6s;
         transition: transform 0.6s;
@@ -994,7 +995,7 @@ body { font: 400 15px/1.4 $font-family; overflow-x: hidden;
     }
 
     figure.effect-apollo:hover img {
-        opacity: 0.6;
+        //opacity: 0.6;
         -webkit-transform: scale3d(1.05, 1.05, 1.05);
         transform: scale3d(1.05, 1.05, 1.05);
     }
