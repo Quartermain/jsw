@@ -84,6 +84,8 @@ jsw = {
                 nav: navOpt,
                 dots: true,
                 loop: true,
+                autoplay:true,
+                autoplayTimeout:5000,
                 dotsContainer: dotsOpt,
                 responsiveClass: true
             });
