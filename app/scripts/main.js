@@ -47,6 +47,9 @@ jsw = {
         jsw.hasSubmenu();
         jsw.sameHeightMenuTop();
 
+        //show search when click
+        jsw.showSearchMenu();
+
 
     },
 
@@ -80,7 +83,7 @@ jsw = {
                 margin: 0,
                 nav: navOpt,
                 dots: true,
-                loop:true,
+                loop: true,
                 dotsContainer: dotsOpt,
                 responsiveClass: true
             });
@@ -207,10 +210,20 @@ jsw = {
     },
 
     btnHamburger: function () {
-        $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+        $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function () {
             $(this).toggleClass('open');
             $(".menu-container").toggleClass("block-sub-menu");
         });
+    },
+
+    showSearchMenu: function () {
+        var wRightMenu = $(".mobile-header .menu-right").width();
+        $(".search-animation .box-search").css("max-width", wRightMenu);
+
+        $(".search-animation .btn-search").on("click", function () {
+            $(".search-animation .box-search").toggleClass("show");
+        });
+
     },
 
 };

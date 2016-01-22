@@ -214,10 +214,9 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
     //navigation
 
     nav { position: relative; font-size: $f-base + 2;
-        .branding { background: url("../images/logo.png") no-repeat; width: 94px; height: 45px; margin: 10px 0 0 30px; display: inline-block; float: left;
+        .branding { background: url("../images/logo.png") no-repeat; width: 94px; height: 45px; margin: 10px 0 0 30px; display: inline-block; float: left; cursor: pointer;
             @include breakpoint($mxw1200) { background: url("../images/logo-tablet.png") no-repeat; width: 66px; height: 32px; margin: 10px 0 0 0px; display: inline-block; float: left; }
             @include breakpoint($mxw992) { background: url("../images/logo-tablet.png") no-repeat; width: 66px; height: 32px; margin: 10px 0 0 30px; display: inline-block; float: left; }
-
         }
         .menu-left { width: percentage(540/1140); float: left;
             @include breakpoint($mxw1200) { width: percentage(570/1140); }
@@ -334,8 +333,19 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
             .btn-search { font-size: $f-base + 4; margin: 23px 35px 0 0; float: right; color: $c-white; position: relative; z-index: 3;
                 a { color: $c-white; }
             }
-            .box-search { background: $c-blue; width: 100%; height: 100%; padding: 10px; position: absolute; z-index: 2; height: 72px;
-                .search-header { font-size: $f-base + 4; background: $c-blue8; width: 100%; @include border-radius(5px); border: none; height: 100%; color: $c-white; padding-left: 20px; font-weight: 300; }
+
+            .search-animation { position: relative; z-index: 100;
+                .box-search { background: $c-blue; width: 0; height: 100%; padding: 10px; position: absolute; z-index: 2; height: 72px; @include transition(all, 0.5s, ease);
+                    &.show { width: 100%; @include transition(all, 0.5s, ease);
+                        .search-header { width: 100%; opacity: 1; @include transition(all, 0.5s, ease); text-transform: capitalize;
+                            &::-webkit-input-placeholder {
+                                color: $c-white;
+                            }
+                        }
+                    }
+                    .search-header { font-size: $f-base + 4; background: $c-blue8; width: 0%; opacity: 0; @include border-radius(5px); border: none; height: 100%; color: $c-white; padding-left: 20px; font-weight: 300; @include transition(all, 0.5s, ease); }
+                }
+
             }
 
             &:after { content: ""; background: $c-blue; width: 100000px; height: 73px; position: absolute; }
