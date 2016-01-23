@@ -42,7 +42,9 @@ jsw = {
         jsw.scrollTop();
         jsw.backgroundVideo();
         jsw.hasSubMenu();
+
         jsw.sameHeight('.block-same-height');
+
         jsw.btnHamburger();
         jsw.hasSubmenu();
         jsw.sameHeightMenuTop();

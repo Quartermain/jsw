@@ -611,7 +611,7 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
 
     .btn-share { padding: 6px 10px; border: solid 1px $c-gray3; @include border-radius(3px); display: inline-block; color: $c-gray4; text-decoration: none;
         width: 75px; @include transition(width, 1s, ease); white-space: nowrap; overflow: hidden; line-height: 18px;
-        @include breakpoint($mxw992) { padding: 2px 5px; width: 50px; }
+        @include breakpoint($mxw992) { padding: 4px 5px; width: 50px; }
         &:hover { width: 150px; text-decoration: none;
             @include breakpoint($mxw992) { width: 110px; }
         }
