@@ -166,8 +166,7 @@ jsw = {
                 }
                 ;
             });
-        }
-        ;
+        };
     },
 
     sameHeight: function (target, disOnMobile) {
@@ -188,9 +187,11 @@ jsw = {
         }
 
         sameHeightInit();
+
         $(window).smartresize(function () {
             sameHeightInit();
         });
+
     },
 
     sameHeightMenuTop: function () {
@@ -231,10 +232,17 @@ jsw = {
     },
 
     campainHeight: function () {
-        setTimeout(function(){
-            var heightMenu = $(".container-menu-top").outerHeight();
-            $(".main-container").css("margin-top", heightMenu);
-        }, 500);
+        function setHMenuTop () {
+            setTimeout(function(){
+                var heightMenu = $(".container-menu-top").outerHeight();
+                $(".main-container").css("margin-top", heightMenu);
+            }, 200);
+        }
+
+        setHMenuTop();
+        $(window).smartresize(function () {
+            setHMenuTop();
+        });
     },
 
 };

@@ -103,6 +103,8 @@ h5 {
     @include breakpoint($mxw992) { font-size: $f-base + 2; }
 }
 
+//retina background
+
 /**************************************************************************************************
  *      Button
  **************************************************************************************************/
@@ -229,7 +231,9 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
                 > li { font-weight: 700; border: none; padding: 0; float: left;
                     a.title-link { color: $c-blue; text-decoration: none; float: left; position: relative; padding: 27px 11px 24px; @include transition(all, 0.5s, ease); }
                     &:hover {
-                        .sub-menu { display: block; @include transition(all, 0.5s, ease); opacity: 1; top: 100%; }
+                        .sub-menu { display: block; @include transition(all, 0.5s, ease); opacity: 1; top: 100%;
+                            @include breakpoint($mnw992) { max-height: inherit; visibility: visible; }
+                        }
                         a.title-link { z-index: 3; background: #fff; @include transition(all, 0.5s, ease);
                             &:before { content: ' '; z-index: 2; float: left; border-top: solid 4px $c-red; position: absolute; left: 0; top: 0; width: 100%; height: 100%; @include transition(all, 0.5s, ease); }
                             &:after { content: ' '; z-index: 1; float: left; border-left: solid 0px $c-gray1; border-right: solid 0px $c-gray1; position: absolute; left: 0; top: 0; width: 100%; height: 100%; @include transition(all, 0.5s, ease); }
@@ -249,7 +253,8 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
                         -webkit-transition: visibility 0.2s linear, opacity 0.2s linear;
                         -moz-transition: visibility 0.2s linear, opacity 0.2s linear;
                         -o-transition: visibility 0.2s linear, opacity 0.2s linear;
-                        @include transition(all, 0.5s, ease); opacity: 0; top: -800%;
+                        @include transition(all, 0.5s, ease); opacity: 0; top: 100%;
+                        @include breakpoint($mnw992) { max-height: 0; visibility: hidden; }
 
                         ul { margin: 0; padding: 0; list-style: none; display: inline-block; vertical-align: top; }
 
@@ -269,12 +274,14 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
         }
         .menu-right { font-weight: 700; background: $c-blue; width: percentage(470/1140); float: right;
             @include breakpoint($mxw1200) { width: percentage(470/1140); }
-            .main-menu-right { float: left; margin-bottom: 0; list-style: none; margin-left: 30px;
-                @include breakpoint($mxw1200) { margin-left: 10px; }
+            .main-menu-right { float: left; margin-bottom: 0; list-style: none; margin-left: 0px;
+                @include breakpoint($mxw1200) { margin-left: 10px; padding-left: 0; }
                 > li { float: left; padding: 0; border: none;
                     a.title-link { color: $c-white; text-decoration: none; float: left; position: relative; padding: 27px 11px 24px; @include transition(all, 0.5s, ease); }
                     &:hover {
-                        .sub-menu { display: block; @include transition(all, 0.5s, ease); opacity: 1; top: 100%; }
+                        .sub-menu { display: block; @include transition(all, 0.5s, ease); opacity: 1; top: 100%;
+                            @include breakpoint($mnw992) { max-height: inherit; visibility: visible; }
+                        }
                         a.title-link { z-index: 3; @include transition(all, 0.5s, ease);
                             &:before { content: ' '; z-index: 2; float: left; border-top: solid 4px $c-red; position: absolute; left: 0; top: 0; width: 100%; height: 100%; @include transition(all, 0.5s, ease); }
                             &:after { content: ' '; z-index: 1; float: left; border-left: solid 0px $c-gray1; border-right: solid 0px $c-gray1; position: absolute; left: 0; top: 0; width: 100%; height: 100%; @include transition(all, 0.5s, ease); }
@@ -294,8 +301,9 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
                         -webkit-transition: visibility 0.2s linear, opacity 0.2s linear;
                         -moz-transition: visibility 0.2s linear, opacity 0.2s linear;
                         -o-transition: visibility 0.2s linear, opacity 0.2s linear;
-                        position: absolute; opacity: 0; top: -500%;
+                        position: absolute; opacity: 0; top: 100%;
                         @include transition(all, 0.5s, ease);
+                        @include breakpoint($mnw992) { max-height: 0; visibility: hidden; }
 
                         ul { margin: 0; padding: 0; list-style: none; display: inline-block; vertical-align: top; }
 
@@ -412,7 +420,8 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
                             }
                         }
                         .sub-menu { background: $c-blue6; padding: 0; position: static; left: 0; opacity: 1; border: none; @include box-shadow(none); display: none;
-                            &.block-sub-menu { display: block !important; }
+                            max-height: 0;
+                            &.block-sub-menu { display: block !important; max-height: inherit; @include transition(all, 0.5s, ease);}
                             .container { width: 100%; padding: 0;
                                 .block-menu {
                                     li { display: block; margin: 0; padding: 10px 0 10px 35px; border-top: none; border-bottom: solid 1px $c-blue7;
@@ -601,7 +610,7 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
     }
 
     .btn-share { padding: 6px 10px; border: solid 1px $c-gray3; @include border-radius(3px); display: inline-block; color: $c-gray4; text-decoration: none;
-        width: 75px; @include transition(width, 1s, ease); white-space: nowrap; overflow: hidden;
+        width: 75px; @include transition(width, 1s, ease); white-space: nowrap; overflow: hidden; line-height: 18px;
         @include breakpoint($mxw992) { padding: 2px 5px; width: 50px; }
         &:hover { width: 150px; text-decoration: none;
             @include breakpoint($mxw992) { width: 110px; }
