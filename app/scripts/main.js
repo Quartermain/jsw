@@ -231,10 +231,10 @@ jsw = {
     },
 
     campainHeight: function () {
-        if ($("body .container-menu-top").length) {
-            var heightMenu = $("body .container-menu-top").outerHeight();
-            $("body .main-container").css("margin-top", heightMenu);
-        }
+        setTimeout(function(){
+            var heightMenu = $(".container-menu-top").outerHeight();
+            $(".main-container").css("margin-top", heightMenu);
+        }, 500);
     },
 
 };

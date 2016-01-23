@@ -111,14 +111,11 @@ h5 {
     @include breakpoint($mxw992) { padding: 10px 15px; font-size: $f-base - 2;
         &.button--shikoba .button__icon { top: 36%; right: 9px; }
     }
-    &:hover { background: $c-white; border: solid 1px $c-blue; color: $c-blue4; padding-right: 48px; @include transition(all, 0.5s, ease);
-        @include breakpoint($mxw992) { padding-right: 25px; }
-    }
+    &:hover { background: $c-white; border: solid 1px $c-blue; color: $c-blue4; padding-right: 33px; @include transition(all, 0.5s, ease); }
 }
 
 .btn-small { background: $c-blue2; padding: 10px 25px; color: $c-white; text-decoration: none;
     @include breakpoint($mxw992) { padding: 5px 10px; }
-
     &.button--shikoba {
         .button__icon { top: 34%; }
     }
@@ -129,9 +126,7 @@ h5 {
         &.button--shikoba .button__icon { top: 36%; right: 9px; }
     }
     @include breakpoint($mxw768) { font-size: $f-base - 2; padding: 13px 17px; font-weight: 700; }
-    &:hover { background: $c-blue; color: #fff; position: relative; border: none; padding-right: 48px; @include transition(all, 0.5s, ease);
-        @include breakpoint($mxw992) { padding-right: 25px; }
-    }
+    &:hover { background: $c-blue; color: #fff; position: relative; border: none; padding-right: 33px; @include transition(all, 0.5s, ease); }
 }
 
 //effect button
@@ -171,11 +166,11 @@ h5 {
 
 .button--shikoba .button__icon {
     position: absolute;
-    right: 25px;
+    right: 15px;
     top: 40%;
     font-size: $f-base;
-    -webkit-transform: translate3d(-20px, 0, 0);
-    transform: translate3d(-20px, 0, 0);
+    -webkit-transform: translate3d(-2px, 0, 0);
+    transform: translate3d(-2px, 0, 0);
     -webkit-transition: -webkit-transform 0.5s;
     transition: transform 0.5s;
     -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
@@ -187,6 +182,12 @@ h5 {
 .button--shikoba:hover > span {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+.button--shikoba:hover > span {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
     opacity: 1;
 }
 
@@ -213,7 +214,6 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
     .wrapper-general { width: auto; margin-left: 15px; margin-right: 15px; top: 0; left: 0; position: absolute; z-index: 10; }
 
     //navigation
-
 
     .container-menu-top { position: fixed; width: 100%; height: auto; z-index: 100; top: 0; }
 
@@ -322,7 +322,8 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
 
                             .link-right { padding-left: 40px; padding-top: 73px;
                                 li { line-height: 35px;
-                                    a { font-size: 22px; font-weight: 300; padding-bottom: 0; padding-right: 50px; overflow: hidden; text-decoration: none; color: $c-white; display: inline-block; position: relative;
+                                    a { font-size: 22px; font-weight: 300; padding-bottom: 0; padding-right: 40px; overflow: hidden; text-decoration: none; color: $c-white; display: inline-block; position: relative;
+                                        &.button--shikoba:hover > span { @include transform(translate3d(0px, 0px, 0px)); }
                                         &:hover {
                                             .button__icon { color: $c-red; }
                                         }
@@ -505,12 +506,12 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
                 .owl-stage { @include transition(all, 1s, ease, !important); }
             }
         }
-        .items { position: relative;
+        .items { position: relative; display: block; @include clearfix;
             .hero-slider,
             .slider-banner { position: absolute; left: 0; top: 0; width: 100%; color: $c-white;
                 .txt-title { font-size: 36px; margin-top: 90px;
-                    @include breakpoint($mxw1200) { font-size: 36px;  margin-top: 5%; }
-                    @include breakpoint($mxw992) { font-size: 36px;}
+                    @include breakpoint($mxw1200) { font-size: 36px; margin-top: 5%; }
+                    @include breakpoint($mxw992) { font-size: 36px; }
                     @include breakpoint($mxw768) { margin-top: 25px; font-size: $f-base + 2; }
                 }
                 .txt-west {
@@ -1056,11 +1057,6 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
 
     //    Humberger button
 
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
     /* Icon 1 */
 
     #nav-icon4 {
@@ -1146,4 +1142,5 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
         top: 29px;
         left: 15px;
     }
+
 }
