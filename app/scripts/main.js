@@ -43,8 +43,6 @@ jsw = {
         jsw.backgroundVideo();
         jsw.hasSubMenu();
 
-        jsw.sameHeight('.block-same-height');
-
         jsw.btnHamburger();
         jsw.hasSubmenu();
         jsw.sameHeightMenuTop();
@@ -54,6 +52,11 @@ jsw = {
 
         //Campain Height
         jsw.campainHeight();
+
+        // Height hero banner
+        jsw.heightHeroBanner();
+        // Avaiable Video
+        jsw.avableVideo();
 
 
     },
@@ -90,9 +93,9 @@ jsw = {
                 dots: true,
                 loop: true,
                 autoplay: true,
-                autoplayTimeout: 5000,
+                autoPlay: 5000,
                 dotsContainer: dotsOpt,
-                responsiveClass: true
+                responsiveClass: true,
             });
 
             if ($(tagert).siblings('.carousel-nav').length) {
@@ -113,6 +116,19 @@ jsw = {
                 });
             }
 
+        }
+    },
+
+    heightHeroBanner: function () {
+        if ($(".hero-banner .owl-carousel").length) {
+            function hOwlCarousel() {
+                var heightHero = $(".hero-banner .owl-carousel").outerHeight();
+                $(".hero-banner .owl-stage-outer .owl-item .items").css("height", heightHero);
+            }
+            hOwlCarousel();
+            $(window).smartresize (function(){
+                hOwlCarousel();
+            });
         }
     },
 
@@ -168,7 +184,8 @@ jsw = {
                 }
                 ;
             });
-        };
+        }
+        ;
     },
 
     sameHeight: function (target, disOnMobile) {
@@ -187,13 +204,18 @@ jsw = {
                 }
             }
         }
-
         sameHeightInit();
 
         $(window).smartresize(function () {
             sameHeightInit();
         });
 
+    },
+
+    avableVideo: function() {
+      if ($(".block-video #bgVideo").length) {
+          jsw.sameHeight('.block-same-height');
+      }
     },
 
     sameHeightMenuTop: function () {
@@ -234,8 +256,8 @@ jsw = {
     },
 
     campainHeight: function () {
-        function setHMenuTop () {
-            setTimeout(function(){
+        function setHMenuTop() {
+            setTimeout(function () {
                 var heightMenu = $(".container-menu-top").outerHeight();
                 $(".main-container").css("margin-top", heightMenu);
             }, 200);

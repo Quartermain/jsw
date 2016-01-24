@@ -421,7 +421,7 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
                         }
                         .sub-menu { background: $c-blue6; padding: 0; position: static; left: 0; opacity: 1; border: none; @include box-shadow(none); display: none;
                             max-height: 0;
-                            &.block-sub-menu { display: block !important; max-height: inherit; @include transition(all, 0.5s, ease);}
+                            &.block-sub-menu { display: block !important; max-height: inherit; @include transition(all, 0.5s, ease); }
                             .container { width: 100%; padding: 0;
                                 .block-menu {
                                     li { display: block; margin: 0; padding: 10px 0 10px 35px; border-top: none; border-bottom: solid 1px $c-blue7;
@@ -514,6 +514,7 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
             .owl-stage-outer {
                 .owl-stage { @include transition(all, 1s, ease, !important); }
             }
+            .owl-item img { height: auto; }
         }
         .items { position: relative; display: block; @include clearfix;
             .hero-slider,
@@ -544,6 +545,7 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
                 }
             }
         }
+
         .btn-scroll-down { position: absolute; width: 100%; bottom: 10%; z-index: 3;
             @include breakpoint($mxw768) { bottom: 4%; }
             .btn-down { font-size: $f-base + 4; background: $c-red; width: 54px; padding: 10px 0; color: $c-white; text-align: center; cursor: pointer; display: block; @include border-radius(2px);
@@ -702,7 +704,17 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
             }
         }
     }
+
     .block-video { position: relative;
+        @include breakpoint($mxw1200) {
+            #bgVideo {
+                iframe,
+                object,
+                embed {
+                    width: 100% !important;
+                }
+            }
+        }
         .content-video { width: 100%; position: absolute; left: 0; top: 0; padding-top: 90px; color: $c-white;
             @include breakpoint($mxw768) { padding-top: 0px; text-align: center; }
             .logo-white { margin-left: 30px;
@@ -726,14 +738,14 @@ body { font: 400 14px/1.4 $font-family; overflow-x: hidden;
     //    Partner
 
     .sliderPartner { position: relative; padding-bottom: 30px;
-        .block-partner {
-            > h2 { margin: 50px 0 60px 0; text-transform: uppercase; text-align: center;
-                @include breakpoint($mxw992) { margin: 40px 0; }
-                @include breakpoint($mxw768) { margin: 20px 0 20px; }
-                span { font-weight: 700;
-                    @include breakpoint($mxw992) { font-weight: 300; }
-                }
+        > h2 { margin: 50px 0 60px 0; text-transform: uppercase; text-align: center;
+            @include breakpoint($mxw992) { margin: 40px 0; }
+            @include breakpoint($mxw768) { margin: 20px 0 20px; }
+            span { font-weight: 700;
+                @include breakpoint($mxw992) { font-weight: 300; }
             }
+        }
+        .block-partner {
             .text-description { font-family: $font-second; font-size: 22px; font-style: italic; margin-bottom: 20px; line-height: 32px; color: $c-gray5;
                 @include breakpoint($mxw992) { font-size: 14px; line-height: 20px; }
                 @include breakpoint($mxw768) { font-size: 14px; line-height: 16px; text-align: center; margin-top: 25px; }
